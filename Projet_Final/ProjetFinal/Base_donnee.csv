@@ -1,18 +1,18 @@
-;Modele;Constructeur;Type;Nbre passagers;Nbre equipages;Moteur;Conso Cruise;Surface Alaire ;Hcruise;Vcruise ;Range;Ma cruise;Wing Span ;WTO max ;WLA max ;Wfuel max ;Wempty
-;;;;;;;;ft^2;ft;kts;nm;;ft;;;USG;
-;A321-100 Neo;Airbus;Long courrier;244;;;;1315,5;;;7400;0,78;114,83;213848;174165,2;32940;
-;B737-800;Boeing;Long courrier;189;;;0,57;1341,2;41000;456;3000;;;174198;;;
-;A320neo;Airbus;Long courrier;;;;0,51;1313;;;3400;0,78;117;174165;148591;;
-;A321neoXLR;Airbus;Long courrier;;;;0,52;1313;;;4697;0,78;115;213800;164850;;
-;A320;Airbus;Long courrier;194;;;;;;;3400;;117;174200;148600;7?060;
-A220-200;A220;Airbus;Long courrier;120;;;;;;;3400;;;139000;119500;5?760;
-A330-800;A330;Airbus;Long courrier;250;;;;;;;8150;;210;533400;410050;36750;
-A350-900;A350;Airbus;Long courrier;350;;;;;;;8300;;212,5;623900;456400;43981;
-A350-1000;A350;Airbus;Long courrier;410;;;;;;;8700;;212,5;703200;520300;43324;
-;ACJ220;Airbus;jet;;;PW1500G series;;;;M0,78;5650;0,78;115;139000;112500;7550;108000
-;B777-300ER;Boeing;Long courrier;396;;;;4702;35104;497;7370;;212;775002;554000;;
-ACJ319neo;ACJneo;Airbus;jet;;;CFM LEAP-1A/PW1100G;;;;;6750;;111;170417;140875;9880;132?939
-ACJ320neo;ACJneo;Airbus;jet;;;CFM LEAP-1A/PW1100G;;;;;6000;;117,5;174165;148592;9880;141757
-ACJ330neo;ACJneo;Airbus;jet;;;;;;;;10400;;210;553400;410060;36750;388000
-;ACJ350;Airbus;jet;;;;;;;;11100;;212,5;606200;456350;43890;431450
-;747-400-ER;Boeing;Long courrier;;;;;5650;;490;7585;0,855;211;910000;;;412300
+Modele;Constructeur;Type;Nbre passagers;Nbre equipages;Moteur;Conso Cruise;Surface Alaire ;Hcruise;Vcruise ;Range;Ma cruise;Wing Span ;WTO max ;WLA max ;Wfuel max ;Wempty
+;;;;;;;ft^2;ft;kts;nm;;ft;;;USG;
+A321-100 Neo;Airbus;Long courrier;244;;;;1315,5;;;7400;0,78;114,83;213848;174165,2;32940;
+B737-800;Boeing;Long courrier;189;;;0,57;1341,2;41000;456;3000;;;174198;;;
+A320neo;Airbus;Long courrier;;;;0,51;1313;;;3400;0,78;117;174165;148591;;
+A321neoXLR;Airbus;Long courrier;;;;0,52;1313;;;4697;0,78;115;213800;164850;;
+A320;Airbus;Long courrier;194;;;;;;;3400;;117;174200;148600;7?060;
+A220;Airbus;Long courrier;120;;;;;;;3400;;;139000;119500;5?760;
+A330;Airbus;Long courrier;250;;;;;;;8150;;210;533400;410050;36750;
+A350-900;Airbus;Long courrier;350;;;;;;;8300;;212,5;623900;456400;43981;
+A350-1000;Airbus;Long courrier;410;;;;;;;8700;;212,5;703200;520300;43324;
+ACJ220;Airbus;jet;;;PW1500G series;;;;M0,78;5650;0,78;115;139000;112500;7550;108000
+B777-300ER;Boeing;Long courrier;396;;;;4702;35104;497;7370;;212;775002;554000;;
+ACJ319neo;Airbus;jet;;;CFM LEAP-1A/PW1100G;;;;;6750;;111;170417;140875;9880;132?939
+ACJ320neo;Airbus;jet;;;CFM LEAP-1A/PW1100G;;;;;6000;;117,5;174165;148592;9880;141757
+ACJ330neo;Airbus;jet;;;;;;;;10400;;210;553400;410060;36750;388000
+ACJ350;Airbus;jet;;;;;;;;11100;;212,5;606200;456350;43890;431450
+747-400-ER;Boeing;Long courrier;;;;;5650;;490;7585;0,855;211;910000;;;412300
