@@ -5,8 +5,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-data = pd.read_csv('Base_donnee.csv',index_col=0,delimiter=';',decimal=',',thousands=' ')
-data.columns = ['Modele','Constructeur','Type','Nbre passager','Nbre equipage','Modele moteur','conso cruise','surface alaire','Alt cruise','Vcruise','Range','Ma cruise','Wing span','WTO','WLA','Wf','We']
+data = pd.read_csv('Base_donnee_avions.csv',index_col=0,delimiter=';',decimal=',',thousands=' ')
+data.columns = ['Modele','Constructeur','Type','Conso','s_alaire','envergure','allongement','range','Mach_cruise','Mach_max','WTO','WLA','Wf','We']
 
 
 Cd0 = 0.015
@@ -17,21 +17,18 @@ class Aircraft:
         avion = data[data['Modele'] == self.name ]         
         self.constructeur = avion['Constructeur']
         self.type=avion['Type']
-        self.passager:avion['Nbre passager']
-        self.equipage= avion['Nbre equipage']
-        self.moteur = avion['Modele moteur']
-        self.conso_cruise = avion['conso cruise']
-        self.surface_alaire = avion['surface alaire']
-        self.alt_cruise = avion['Alt cruise']
-        self.v_cruise = avion['Vcruise']
-        self.range = avion ['Range']
-        self.mach_cruise = avion ['Ma cruise']
-        self.envergure = avion ['Wing span']
+        self.conso_cruise = avion['Conso']
+        self.s_alaire = avion['s_alaire']
+        self.envergure = avion['envergure']
+        self.allongement = avion['allongement']
+        self.range = avion ['range']
+        self.M_cruise = avion ['Mach_cruise']
+        self.M_max = avion ['Mach_max']
         self.wto = avion ['WTO']
         self.wla = avion ['WLA']
         self.wf = avion ['Wf']
         self.we = avion ['We']
-        print(self.we)
+        
 
 
         
