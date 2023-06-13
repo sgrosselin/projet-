@@ -34,24 +34,8 @@ class Aircraft:
         print(self.we)
 
 
-#        
-#    def recherche_avion(self):
-#         avion = data[data['Modele'] == self.name ]
-#         
-#         self.constructeur = avion['Constructeur']
-#         print(self.constructeur)
-#         
-#         return avion
-        
         
         
 avion=Aircraft()
-#avion.recherche_avion()      
-        
-#        self.S 
-#        self.wing_span = wing_span  # Envergure de l'aile en m
-#        self.Range = Range
-#    
-        
 
 
