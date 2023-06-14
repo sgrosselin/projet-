@@ -66,8 +66,8 @@ class Vitesse :
             rho11km = rhoSL * (T11km / TSL) ** (-g0 / (a * R) - 1)  # densite 11 km
             rho = rho11km * m.exp(-(g0 / (R * T)) * (hm - 11e3))  # densite apres 11 km
         print("La densité est de", rho, "slug/ft^3")
-        print(m.sqrt(self.Avion.Wto/(0.5*rho*Cltomax*self.Avion.s_alaire)))
-        return m.sqrt(self.Avion.Wto/(0.5*rho*Cltomax*self.Avion.s_alaire))
+        
+        return round(m.sqrt(self.Avion.Wto/(0.5*rho*Cltomax*self.Avion.s_alaire)),2)
     
 
     def vitesse_decollage(self):
