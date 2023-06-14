@@ -6,7 +6,9 @@ Created on Tue Jun 13 16:52:49 2023
 @author: salome
 """
 
-#from .Vitesses import Vitesse
-from .Consommation import Conso
+from .vitesses import Vitesse
+from .consommation import Conso
 
 from .aircraft import Aircraft
+
+

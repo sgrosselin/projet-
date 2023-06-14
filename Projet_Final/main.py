@@ -8,5 +8,9 @@ Created on Tue Jun 13 16:57:05 2023
 
 import ProjetFinal
 
-c = ProjetFinal.Conso
-print(c)
+Avion = Aircraft()
+Speed = Vitesse(Avion)
+v_cruise=Speed.vitesse_cruise()
+c = Conso(Avion, Speed)
+
+print(v_cruise)
