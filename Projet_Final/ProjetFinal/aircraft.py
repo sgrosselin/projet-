@@ -1,15 +1,11 @@
 
 
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-
 
 data = pd.read_csv('Base_donnee_avions.csv',index_col=0,delimiter=';',decimal=',',thousands=' ')
 data.columns = ['Modele','Constructeur','Type','Conso','s_alaire','envergure','allongement','range','Mach_cruise','Mach_max','WTO','WLA','Wf','We']
 
 
-Cd0 = 0.015
 
 class Aircraft:
     def __init__(self):

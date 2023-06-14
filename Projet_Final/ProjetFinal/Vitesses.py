@@ -6,7 +6,7 @@ rhoSL = 0.00237  # densite de reference en slug/ft^3 au niveau de la mer
 g0 = 9.81  # attraction gravitationnelle, en m/s^2
 a = -0.0065  # constante d'evolution de temperature, en Kelvin/m
 R = 287  # constante des gaz pour l'air, J / (kg K)
-class Vitesse():
+class Vitesse :
     def __init__(self, Avion, Atmosphere, Conso ):
         self.Avion=Avion
         self.Atmosphere=Atmosphere
