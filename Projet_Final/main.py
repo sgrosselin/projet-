@@ -1,9 +1,12 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jun 13 16:57:05 2023
+
+@author: salome
+"""
+
 import ProjetFinal
 
-
-a = ProjetFinal.Atmosphere(altitude=10000)
-density = a.density()
-
-# Calcul de la performance de vol en utilisant la fonction Performance
-lift, drag, thrust = ProjetFinal.performance(density=density, velocity=f.speed, weight=100000)
-
+c = ProjetFinal.Conso
+print(c)
