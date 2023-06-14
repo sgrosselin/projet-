@@ -30,8 +30,6 @@ class Aircraft:
         self.we = avion ['We']
         
 
-
-        
         
 avion=Aircraft()
 
