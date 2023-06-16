@@ -56,9 +56,9 @@ class Vitesse :
         return 1.1*self.vitesse_decrochage(conso)
 
     def vitesse_descente(self):
-        k=1/(m.pi()*self.Avion.allongement*e)
+        k=1/(m.pi*self.Avion.allongement*e)
         Cl = m.sqrt(Cd0/k)
-        V_desc = m.sqrt((2*m.cos(gamma_desc)*self.Avion.Wla)/self.rho*Cl*self.Avion.s_alaire)
+        V_desc = m.sqrt((2*m.cos(m.degrees(gamma_desc))*self.Avion.Wla)/(rhoSL*Cl*self.Avion.s_alaire))
         return V_desc
 
 
