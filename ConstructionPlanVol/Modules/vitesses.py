@@ -32,9 +32,6 @@ class Vitesse :
         return vitesse_max, vitesse_cruise, self.Tliste
         
 
-
-    
-
     def vitesse_decrochage(self,consommation):
         self.conso=consommation
         Cltomax=1.8
