@@ -12,7 +12,7 @@ R = 287  # constante des gaz pour l'air, J / (kg K)
 class Vitesse :
     def __init__(self, toto):
         self.Avion=toto
-        
+
 
     def vitesse_max(self):
         vitesse_max=[]
@@ -73,7 +73,8 @@ class Vitesse :
     def vitesse_decollage(self):
         print(1.1*self.vitesse_decrochage)
         return 1.1*self.vitesse_decrochage
-    
+
+
 #v=Vitesse()
 #v.vitesse_decollage() 
     

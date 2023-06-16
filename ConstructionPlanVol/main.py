@@ -11,9 +11,12 @@ from Modules import Aircraft
 from Modules import Distance, Aeroports
 
 
-#Avion = Aircraft()
+Avion = Aircraft()
 aeroport= Aeroports()
 s=aeroport.distance_aeroports()
 Dist = Distance(40000, s)
-print(Dist.distance_montee())
+m=Dist.distance_montee()
+d=Dist.distance_descente()
+Dist.distance_croisiere(d,m)
+
 
