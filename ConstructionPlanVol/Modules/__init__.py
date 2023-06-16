@@ -11,5 +11,6 @@ from .consommation import Conso
 from .aircraft import Aircraft
 from .distance import Distance
 from .aeroport import Aeroports
+from .temps import Temps
 
 
