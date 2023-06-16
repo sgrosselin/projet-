@@ -10,71 +10,51 @@ g0 = 9.81  # attraction gravitationnelle, en m/s^2
 a = -0.0065  # constante d'evolution de temperature, en Kelvin/m
 R = 287  # constante des gaz pour l'air, J / (kg K)
 class Vitesse :
-    def __init__(self, toto):
-        self.Avion=toto
-
-
-    def vitesse_max(self):
+    def __init__(self,avion):
+        self.Avion= avion
+        
+    def calcul_vitesse(self):
         vitesse_max=[]
+        vitesse_cruise = []
+        self.altitude=[]
+        self.Tliste=[]
         for i in range(10000, 41000, 1000):
-            hm = i * 0.3048
-            T11km= 216.66           # Température au niveau de la limite troposphère-stratosphère
-            TSL = 288.15        # Température en K au niveau de la mer
-            if hm < 11e3:  # Troposphère
-                T = TSL - 6.5e-3 * hm
+            if i < 11e3:  # Troposphère
+                T = TSL - 6.5e-3 * i
             else:
-                T = T11km  # Stratosphère       
+                T = T11km  # Stratosphère  
+            self.altitude.append(i)
+            self.Tliste.append(T)
             self.a= m.sqrt(1.4*1716*T)
+            vitesse_cruise.append(round((self.Avion.M_cruise * self.a),2))
             vitesse_max.append(round((self.Avion.M_max*self.a),2))
         print("La température est de", T, "K")
-        print(vitesse_max)
-        return vitesse_max
+        return vitesse_max, vitesse_cruise, self.Tliste
+        
 
-    def vitesse_cruise(self):
-        vitesse_cruise = []
-        Tliste=[]
-        for i in range(10000, 41000, 1000):
-            hm = i * 0.3048
-            T11km= 216.66           # Température au niveau de la limite troposphère-stratosphère
-            TSL = 288.15        # Température en K au niveau de la mer
-            if hm < 11e3:  # Troposphère
-                T = TSL - 6.5e-3 * hm
-            else:
-                T = T11km  # Stratosphère
-            Tliste.append(T)            
-            self.a = m.sqrt(1.4 * 1716 * T)
-            vitesse_cruise.append(round((self.Avion.M_cruise * self.a),2))
-        print("La température est de", T, "K")
-        return (vitesse_cruise, Tliste)
-#v=Vitesse()
-#v.vitesse_cruise()
 
     
 
-    def vitesse_decrochage(self, Conso):
-        
-        vitesse_cruise, Tliste = self.vitesse_cruise()
+    def vitesse_decrochage(self,consommation):
+        self.conso=consommation
         Cltomax=1.8
-        T11km = 216.66  # Température au niveau de la limite troposphère-stratosphère
-        TSL = 288.15
-        c,v,i=self.conso.consommation()
-        T = Tliste[self.c.i_min]
-        if T > T11km:
-            rho = rhoSL * (T / TSL) ** (-g0 / (a * R) - 1)
+        c,v,i_min=self.conso.consommation()
+        Temp = self.Tliste[i_min]
+        if Temp > T11km:
+            rho = rhoSL * (Temp / TSL) ** (-g0 / (a * R) - 1)
         else:
-            hm = self.altitude * 0.3048  # conversion des pieds en metre
+            hm = self.altitude[i_min]
             rho11km = rhoSL * (T11km / TSL) ** (-g0 / (a * R) - 1)  # densite 11 km
-            rho = rho11km * m.exp(-(g0 / (R * T)) * (hm - 11e3))  # densite apres 11 km
+            rho = rho11km * m.exp(-(g0 / (R * Temp)) * (hm - 11e3))  # densite apres 11 km
         print("La densité est de", rho, "slug/ft^3")
         print(m.sqrt(self.Avion.Wto/(0.5*rho*Cltomax*self.Avion.s_alaire)))
         return m.sqrt(self.Avion.Wto/(0.5*rho*Cltomax*self.Avion.s_alaire))
     
 
     def vitesse_decollage(self):
-        print(1.1*self.vitesse_decrochage)
-        return 1.1*self.vitesse_decrochage
-
-
+        print(1.1*self.vitesse_decrochage())
+        return 1.1*self.vitesse_decrochage()
+    
 #v=Vitesse()
 #v.vitesse_decollage() 
     
