@@ -6,8 +6,7 @@ Created on Tue Jun 13 16:57:05 2023
 @author: salome
 """
 
-import ProjetFinal
-
+from ProjetFinal import Aircraft
 Avion = Aircraft()
 Speed = Vitesse(Avion)
 v_cruise=Speed.vitesse_cruise()

@@ -12,9 +12,10 @@ class Aeroports:
     def __init__(self):
         self.name = str(input('Entrez le sigle IATA de l\' aéroport d\'arrivée : '))
         aeroport = data.loc[[self.name]]
-        self.latitude_arr = aeroport['Latitude (Nord)']
-        self.longitude_arr =aeroport['Longitude (Est)']
-        self.altitude = aeroport['Altitude']
+        self.latitude_arr = aeroport['Latitude (Nord)'].astype("float").values[0]
+        self.longitude_arr =aeroport['Longitude (Est)'].astype("float").values[0]
+        self.altitude = aeroport['Altitude'].astype("float").values[0]
+
 
     def distance_aeroports(self):
         self.aeroport_depart='CDG'
@@ -28,9 +29,9 @@ class Aeroports:
         S = acos(sin(radians(float(self.latitude_dep))) * sin(radians(float(self.latitude_arr))) + cos(radians(float(self.latitude_dep))) * cos(radians(float(self.latitude_arr))) * cos(abs(radians(float(self.longitude_arr)) - radians(float(self.longitude_dep)))))
         # distance entre les 2 points, comptée sur un arc de grand cercle
         dist_aeroports = S * (RT+H)
-        print(dist_aeroports/1000)
+        print(dist_aeroports/1000)      # Distance en km
         return dist_aeroports
 
-aeroport = Aeroports()
-aeroport.distance_aeroports()
+
+
 
