@@ -9,6 +9,9 @@ rhoSL = 0.00237  # densite de reference en slug/ft^3 au niveau de la mer
 g0 = 9.81  # attraction gravitationnelle, en m/s^2
 a = -0.0065  # constante d'evolution de temperature, en Kelvin/m
 R = 287  # constante des gaz pour l'air, J / (kg K)
+gamma_desc = 3.5
+Cd0 = 0.015
+e=0.8
 class Vitesse :
     def __init__(self,avion):
         self.Avion= avion
@@ -42,7 +45,7 @@ class Vitesse :
         else:
             hm = self.altitude[i_min]
             rho11km = rhoSL * (T11km / TSL) ** (-g0 / (a * R) - 1)  # densite 11 km
-            rho = rho11km * m.exp(-(g0 / (R * Temp)) * (hm - 11e3))  # densite apres 11 km
+            self.rho = rho11km * m.exp(-(g0 / (R * Temp)) * (hm - 11e3))  # densite apres 11 km
         print("La densité est de", rho, "slug/ft^3")
         print(m.sqrt(self.Avion.Wto/(0.5*rho*Cltomax*self.Avion.s_alaire)))
         return m.sqrt(self.Avion.Wto/(0.5*rho*Cltomax*self.Avion.s_alaire))
@@ -51,7 +54,17 @@ class Vitesse :
     def vitesse_decollage(self,conso):
         print(1.1*self.vitesse_decrochage(conso))
         return 1.1*self.vitesse_decrochage(conso)
-    
+
+    def vitesse_descente(self):
+        k=1/(m.pi()*self.Avion.allongement*e)
+        Cl = m.sqrt(Cd0/k)
+        V_desc = m.sqrt((2*m.cos(gamma_desc)*self.Avion.Wla)/self.rho*Cl*self.Avion.s_alaire)
+        return V_desc
+
+
+
+
+
 #v=Vitesse()
 #v.vitesse_decollage() 
     
