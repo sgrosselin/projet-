@@ -19,5 +19,5 @@ avion = Aircraft()
 
 v=Vitesse(avion)
 conso=Conso(avion,v)
-v.vitesse_decollage() 
+v.vitesse_decollage(conso) 
 #v.vitesse_max()

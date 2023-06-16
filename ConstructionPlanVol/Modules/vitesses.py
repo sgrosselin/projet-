@@ -51,9 +51,9 @@ class Vitesse :
         return m.sqrt(self.Avion.Wto/(0.5*rho*Cltomax*self.Avion.s_alaire))
     
 
-    def vitesse_decollage(self):
-        print(1.1*self.vitesse_decrochage())
-        return 1.1*self.vitesse_decrochage()
+    def vitesse_decollage(self,conso):
+        print(1.1*self.vitesse_decrochage(conso))
+        return 1.1*self.vitesse_decrochage(conso)
     
 #v=Vitesse()
 #v.vitesse_decollage() 
