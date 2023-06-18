@@ -12,5 +12,6 @@ from .aircraft import Aircraft
 from .distance import Distance
 from .aeroport import Aeroports
 from .temps import Temps
+from .affichage import Affichage
 
 

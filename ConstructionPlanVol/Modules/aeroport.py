@@ -28,7 +28,8 @@ class Aeroports:
         # angle en radians entre les 2 points
         S = acos(sin(radians(float(self.latitude_dep))) * sin(radians(float(self.latitude_arr))) + cos(radians(float(self.latitude_dep))) * cos(radians(float(self.latitude_arr))) * cos(abs(radians(float(self.longitude_arr)) - radians(float(self.longitude_dep)))))
         # distance entre les 2 points, comptée sur un arc de grand cercle
-        dist_aeroports = (S * (RT+H))*3.28084       ## 2.28084 pour convertir m en ft
+        dist_aeroports = (S * (RT+H))/1000     ## m
+        print(f"distance aeroport",dist_aeroports)
         return dist_aeroports
 
 
