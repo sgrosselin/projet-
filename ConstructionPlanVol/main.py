@@ -20,11 +20,11 @@ Vto=vit.vitesse_decollage(conso)
 V_desc=vit.vitesse_descente()
 Vmax,V_cruise, T=vit.calcul_vitesse()
 s=aeroport.distance_aeroports()
-Dist = Distance(13, s)
+Dist = Distance(vit, s)
 
-D_montee_sol, D_montee=Dist.distance_montee()
-D_desc_sol,D_desc=Dist.distance_descente()
-D_cruise=Dist.distance_croisiere(D_desc_sol,D_montee_sol)
+#D_montee_sol, D_montee=Dist.distance_montee(alt)
+#D_desc_sol,D_desc=Dist.distance_descente()
+#D_cruise=Dist.distance_croisiere(D_desc_sol,D_montee_sol)
 
 
 

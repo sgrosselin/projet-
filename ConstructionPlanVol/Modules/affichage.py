@@ -17,17 +17,21 @@ class Affichage:
         x_t_min=[0]
         i_cruise=0
         #while i< self.t.temps_total(self.v.vmax):
-        while y_t_min[i] >= 0:
-            if i < self.t.temps_mont(self.v.vmax):
-                y_t_min.append(self.v.vmax*m.tan(m.radians(gamma_montee)) * i)
-            elif self.t.temps_mont(self.v.vmax)<i<self.t.temps_mont(self.v.vmax)+self.t.temps_cruise(self.v.vmax):
+        while  y_t_min[-1]>= 0:
+            if i < self.t.temps_mont(self.v.vmax,H_max):
+                y_t_min.append((self.v.vmax/1000)*m.sin(m.radians(gamma_montee))*i)
+                
+            elif self.t.temps_mont(self.v.vmax,H_max)<i<self.t.temps_mont(self.v.vmax,H_max)+self.t.temps_cruise(self.v.vmax,H_max):
                 y_t_min.append(H_max)
                 i_cruise = i
             else :
-                y_t_min.append(H_max-m.tan(m.radians(gamma_desc)) * (i-i_cruise))
+                y_t_min.append(H_max-(self.v.vmax/1000)*m.sin(m.radians(gamma_desc)) * (i-i_cruise))
+                
             x_t_min.append(i)
             i+=1
-        print(f" valeur de x, valeur de y_t_min :", x_t_min, y_t_min)
+        y_t_min.pop(-1)
+        x_t_min.pop(-1)
+        #print(f" valeur de x, valeur de y_t_min :", x_t_min, y_t_min)
         return x_t_min, y_t_min
 
 
@@ -37,17 +41,20 @@ class Affichage:
         y_conso_min=[0]
         x_c_min=[0]
         i_cruise=0
-        while y_conso_min[i] >= 0:
-            if i < self.t.temps_mont(self.c.v_conso):
-                y_conso_min.append(m.tan(m.radians(gamma_montee)) * i)
-            elif self.t.temps_mont(self.c.v_conso)<i<self.t.temps_mont(self.v.vmax)+self.t.temps_cruise(self.c.v_conso):
+        while y_conso_min[-1]>= 0:
+            if i < self.t.temps_mont(self.c.v_conso,H_conso):
+                y_conso_min.append((self.c.v_conso/1000)*m.sin(m.radians(gamma_montee)) * i)
+            
+            elif self.t.temps_mont(self.c.v_conso,H_conso)<i<self.t.temps_mont(self.c.v_conso,H_conso)+self.t.temps_cruise(self.c.v_conso,H_conso):
                 y_conso_min.append(H_conso)
                 i_cruise = i
             else :
-                y_conso_min.append(H_conso-m.tan(m.radians(gamma_desc)) * (i-i_cruise))
+                y_conso_min.append(H_conso-(self.c.v_conso/1000)*m.sin(m.radians(gamma_montee)) * (i-i_cruise))
             x_c_min.append(i)
             i+=1
-        print(f" valeur y_conso_min :", y_conso_min)
+        x_c_min.pop(-1)
+        y_conso_min.pop(-1)
+        #print(f" valeur y_conso_min :", y_conso_min)
         return x_c_min, y_conso_min
 
     def plan_de_vol(self):

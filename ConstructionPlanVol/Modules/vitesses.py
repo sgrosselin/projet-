@@ -23,7 +23,7 @@ class Vitesse :
         vitesse_cruise = []
         self.altitude=[]
         self.Tliste=[]
-        for i in range(3000, 13000, 100):   # i en m
+        for i in range(5000, 13000, 100):   # i en m
             if (i/1000) < 11:  # Troposphère       # en Km
                 T = TSL - 6.5 * (i/1000)    # en km
             else:
@@ -33,8 +33,8 @@ class Vitesse :
             self.a= m.sqrt(1.4*287*T)
             vitesse_cruise.append(round((self.Avion.M_cruise * self.a),2))  # en m/s
             self.vitesse_max.append(round((self.Avion.M_max*self.a),2))  # en m/s
-            print(self.vitesse_max)
-        print("La température est de", T, "K")
+            #print(self.vitesse_max)
+        #print("La température est de", T, "K")
         return self.vitesse_max, vitesse_cruise, self.Tliste
         
     def valeur_vitesse_max(self):
@@ -59,7 +59,7 @@ class Vitesse :
             rho11km = rhoSL * (T11km / TSL) ** (-g0 / (a * R) - 1)  # densite 11 km
             self.rho = rho11km * m.exp(-(g0 / (R * Temp)) * (self.hcruise - 11))  # densite apres 11 km
         print("La densité est de", self.rho, "kg/m^3")
-        print(m.sqrt(self.Avion.Wto*0.4535/(0.5*self.rho*Cltomax*self.Avion.s_alaire*0.0929))) #conversion ft^2 en m^2
+        #print(m.sqrt(self.Avion.Wto*0.4535/(0.5*self.rho*Cltomax*self.Avion.s_alaire*0.0929))) #conversion ft^2 en m^2
         return m.sqrt(self.Avion.Wto*0.4535/(0.5*self.rho*Cltomax*self.Avion.s_alaire*0.0929)) #conversion ft^2 en m^2
     
 
