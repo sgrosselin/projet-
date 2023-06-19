@@ -7,7 +7,7 @@ rhoSL = 1.225  # densite de reference en kg/m^3 au niveau de la mer
 g0 = 9.81  # attraction gravitationnelle, en m/s^2
 a0 = -0.0065  # constante d'evolution de temperature, en Kelvin/m
 R = 287  # constante des gaz pour l'air, J / (kg K)
-gamma_desc = 5
+gamma_desc = 3.5
 Cd0 = 0.015
 e=0.8
 
