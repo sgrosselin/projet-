@@ -64,12 +64,12 @@ class Affichage:
         return x_c_min, y_conso_min
 
     def plan_de_vol(self):
-<<<<<<< Updated upstream
+
     # Cette fonction affiche un graphique avec deux courbes, une pour le temps minimum et une pour la consommation minimum, le tout en fonction du temps
         x_t_min, y_t_min,H_max = self.graphique_altitude_t_min()
-=======
+
         x_t_min, y_t_min, H_max = self.graphique_altitude_t_min()
->>>>>>> Stashed changes
+
         x_c_min, y_conso_min = self.graphique_altitude_C_min()
 
         fig, ax = plt.subplots()
