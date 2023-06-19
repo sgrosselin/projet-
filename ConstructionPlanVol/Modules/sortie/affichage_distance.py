@@ -23,17 +23,15 @@ class Affichage_dist:
         
         i=0
         x_t_min=[0]
-        y_t_min=[13/3281]
-        while  y_t_min[-1]>= 0:
+        y_t_min=[392/3281] #On part de l'altiude de notre aeroport de départ qui est CDG. Mais c'est en ft donc on le mets en km.
+        while  y_t_min[-1]>= self.a.altitude/3281: #Tant que notre avion n'a pas atteint l'altitude de notre aeroport d'arrivée, on continue d'implémenter
             if i < dist_mont_sol_max :
-                #y_t_min.append((self.v.vmax/1000)*m.sin(m.radians(gamma_montee))*i)
                 y_t_min.append((i*(self.H_max/dist_mont_sol_max) + y_t_min[0]))
                 
             elif dist_mont_sol_max <i<dist_mont_sol_max +self.d.distance_croisiere(dist_mont_sol_max, dist_desc_sol_max):
                 y_t_min.append(self.H_max)
                 i_cruise = i
             else :
-                #y_t_min.append(H_max-(self.v.vmax/1000)*m.sin(m.radians(gamma_desc)) * (i-i_cruise))
                 y_t_min.append(self.H_max-((i-i_cruise)*(self.H_max/dist_desc_sol_max) + y_t_min[0]))
             x_t_min.append(i)
             i+=1
@@ -49,17 +47,15 @@ class Affichage_dist:
         
         i=0
         x_c_min=[0]
-        y_c_min=[13/3281]
-        while  y_c_min[-1]>= 0:
+        y_c_min=[392/3281] #On part de l'altiude de notre aeroport de départ qui est CDG. Mais c'est en ft donc on le mets en km.
+        while  y_c_min[-1]>= self.a.altitude/3281: #Tant que notre avion n'a pas atteint l'altitude de notre aeroport d'arrivée, on continue d'implémenter
             if i < dist_mont_sol_conso :
-                #y_c_min.append((self.c.v_conso/1000)*m.sin(m.radians(gamma_montee))*i)
                 y_c_min.append(i*(self.H_conso/dist_mont_sol_conso) + y_c_min[0])
                 
             elif dist_mont_sol_conso <i<dist_mont_sol_conso +self.d.distance_croisiere(dist_mont_sol_conso, dist_desc_sol_conso):
                 y_c_min.append(self.H_conso)
                 i_cruise = i
             else :
-                #y_c_min.append(H_conso-(self.c.v_conso/1000)*m.sin(m.radians(gamma_desc)) * (i-i_cruise))
                 y_c_min.append(self.H_conso-((i-i_cruise)*(self.H_conso/dist_desc_sol_conso) + y_c_min[0]))
             x_c_min.append(i)
             i+=1

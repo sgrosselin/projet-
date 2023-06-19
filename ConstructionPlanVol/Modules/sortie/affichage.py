@@ -12,10 +12,10 @@ class Affichage:
     def graphique_altitude_t_min(self):
         i_max, H_max = self.v.valeur_vitesse_max()
         i=0
-        y_t_min=[13/3281]
+        y_t_min=[392/3281] #On part de l'altiude de notre aeroport de départ qui est CDG. Mais c'est en ft donc on le mets en km.
         x_t_min=[0]
         i_cruise=0
-        while  y_t_min[-1]>= 0:
+        while  y_t_min[-1]>= self.a.altitude/3281:#Tant que notre avion n'a pas atteint l'altitude de notre aeroport d'arrivée, on continue d'implémenter
             if i < self.t.temps_mont(H_max):
                 y_t_min.append(((H_max/self.t.temps_mont(H_max)) * i) + y_t_min[0])
 
@@ -29,17 +29,16 @@ class Affichage:
             i+=1
         y_t_min.pop(-1)
         x_t_min.pop(-1)
-        #print(f" valeur de x, valeur de y_t_min :", x_t_min, y_t_min)
         return x_t_min, y_t_min, H_max
 
 
     def graphique_altitude_C_min(self):
         H_conso=self.v.hcruise
         i=0
-        y_conso_min=[13/3281]
+        y_conso_min=[392/3281] #On part de l'altiude de notre aeroport de départ qui est CDG. Mais c'est en ft donc on le mets en km.
         x_c_min=[0]
         i_cruise=0
-        while y_conso_min[-1]>= 0:
+        while y_conso_min[-1]>= self.a.altitude/3281: #Tant que notre avion n'a pas atteint l'altitude de notre aeroport d'arrivée, on continue d'implémenter
             if i < self.t.temps_mont(H_conso):
                 y_conso_min.append(((H_conso/self.t.temps_mont(H_conso)) * i + y_conso_min[0]))
 
@@ -52,7 +51,6 @@ class Affichage:
             i+=1
         x_c_min.pop(-1)
         y_conso_min.pop(-1)
-        #print(f" valeur y_conso_min :", y_conso_min)
         return x_c_min, y_conso_min
 
     def plan_de_vol(self):
