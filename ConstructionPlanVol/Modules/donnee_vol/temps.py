@@ -14,7 +14,12 @@ class Temps:
 
     def temps_cruise(self,v_vol,alt):
         self.d_desc_sol, self.d_desc= self.d.distance_descente(alt)
+<<<<<<< Updated upstream
         self.tps_cruise=self.d.distance_croisiere(self.d_desc_sol,self.d_montee_sol)*1000/(v_vol) #Pour calculer le temps de croisière on utilise la distance de descente au sol et de montée au sol
+=======
+        self.tps_cruise=self.d.distance_croisiere(self.d_desc_sol,self.d_montee_sol)*1000/v_vol
+        #print(self.tps_cruise)
+>>>>>>> Stashed changes
         return self.tps_cruise
 
     def temps_desc(self):
