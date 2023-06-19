@@ -23,10 +23,11 @@ class Affichage:
                 y_t_min.append(((H_max/self.t.temps_mont(H_max)) * i) + y_t_min[0])
 
             elif self.t.temps_mont(H_max)<i<self.t.temps_mont(H_max)+self.t.temps_cruise(self.v.vmax,H_max):
-                #si i est dans le temps de la croisière, alors on ajoute à y l'altitude de notre croisière
+            #si i est dans le temps de la croisière, alors on ajoute à y l'altitude de notre croisière
                 y_t_min.append(H_max)
                 i_cruise = i
             else :
+            # si i est dans le temps de descente, on ajoute à y la valeur de la fonction affine qui dépaend du coefficient directeur pour la descente
                 y_t_min.append(H_max-((H_max/self.t.temps_desc() * (i-i_cruise)) + y_t_min[0]))
 
             x_t_min.append(i)
@@ -45,12 +46,15 @@ class Affichage:
         while y_conso_min[-1]>= self.a.altitude/3281:
         #Tant que notre avion n'a pas atteint l'altitude de notre aeroport d'arrivée, on continue d'implémenter
             if i < self.t.temps_mont(H_conso):
+            #Si i est plus petit que le temps de montée que l'on a calculé, alors on ajoute à y la valeur de la fonction affine qui dépend du coefficient directeur pour la montée
                 y_conso_min.append(((H_conso/self.t.temps_mont(H_conso)) * i + y_conso_min[0]))
 
             elif self.t.temps_mont(H_conso)<i<self.t.temps_mont(H_conso)+self.t.temps_cruise(self.c.v_conso,H_conso):
+            #si i est dans le temps de la croisière, alors on ajoute à y l'altitude de notre croisière
                 y_conso_min.append(H_conso)
                 i_cruise = i
             else :
+            # si i est dans le temps de descente, on ajoute à y la valeur de la fonction affine qui dépaend du coefficient directeur pour la descente
                 y_conso_min.append(H_conso-((i-i_cruise)*(H_conso/self.t.temps_desc()) + y_conso_min[0]))
             x_c_min.append(i)
             i+=1  #On incrémente i afin de continuer la boucle while
@@ -59,6 +63,7 @@ class Affichage:
         return x_c_min, y_conso_min
 
     def plan_de_vol(self):
+    # Cette fonction affiche un graphique avec deux courbes, une pour le temps minimum et une pour la consommation minimum, le tout en fonction du temps
         x_t_min, y_t_min,H_max = self.graphique_altitude_t_min()
         x_c_min, y_conso_min = self.graphique_altitude_C_min()
         plt.figure(1)

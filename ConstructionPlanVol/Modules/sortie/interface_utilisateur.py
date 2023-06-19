@@ -6,6 +6,7 @@ Created on Mon Jun 19 12:18:12 2023
 @author: salome
 """
 
+# Cette classe permet d'afficher à l'utilisateur les différents résultats obtenus
 class Utilisateur:
     def __init__(self,aff_dist, aff_tps):
         self.aff_dist = aff_dist
