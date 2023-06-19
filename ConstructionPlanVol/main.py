@@ -36,8 +36,8 @@ v.vitesse_decollage(conso) """
 #v.vitesse_max()
 
 tps = Temps(Dist,Vto,V_desc)
-b=Affichage(conso, vit, tps)
-a=Affichage_dist(conso, vit, Dist)
+b=Affichage(conso, vit, tps, aeroport)
+a=Affichage_dist(conso, vit, Dist, aeroport)
 
 utilisateur = Utilisateur (a,b)
 
