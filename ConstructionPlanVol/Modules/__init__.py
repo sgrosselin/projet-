@@ -8,9 +8,7 @@ Created on Tue Jun 13 16:52:49 2023
 
 
 from .sortie import *
-from .Entree import *
-
-from .dist_temps import *
-from .avion import *
+from .entree import *
+from .donnee_vol import *
 
 

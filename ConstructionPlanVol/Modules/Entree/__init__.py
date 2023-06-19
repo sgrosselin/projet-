@@ -7,3 +7,4 @@ Created on Mon Jun 19 14:20:38 2023
 """
 
 from .aeroport import Aeroports
+from .aircraft import Aircraft

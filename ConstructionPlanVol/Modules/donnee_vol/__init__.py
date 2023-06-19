@@ -8,4 +8,5 @@ Created on Mon Jun 19 14:17:14 2023
 
 from .vitesses import Vitesse
 from .consommation import Conso
-from .aircraft import Aircraft
+from .distance import Distance
+from .temps import Temps
