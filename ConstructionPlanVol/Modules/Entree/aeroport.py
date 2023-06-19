@@ -12,7 +12,6 @@ class Aeroports:
     def __init__(self):
         self.name = str(input('Entrez le sigle IATA de l\' aéroport d\'arrivée : '))
         aeroport = data.loc[[self.name]]
-        #self.destination=aeroport['Noms'].values[0]
         self.latitude_arr = aeroport['Latitude (Nord)'].astype("float").values[0]
         self.longitude_arr =aeroport['Longitude (Est)'].astype("float").values[0]
         self.altitude = aeroport['Altitude'].astype("float").values[0]
