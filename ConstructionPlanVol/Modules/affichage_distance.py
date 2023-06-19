@@ -18,9 +18,9 @@ class Affichage_dist:
         self.d = distance
         
     def graphique_t_min(self):
-        i_max, H_max = self.v.valeur_vitesse_max()
-        dist_mont_max, dist_mont_sol_max = self.d.distance_montee(H_max)
-        dist_desc_max, dist_desc_sol_max = self.d.distance_descente(H_max)
+        i_max,self.H_max = self.v.valeur_vitesse_max()
+        dist_mont_max, dist_mont_sol_max = self.d.distance_montee(self.H_max)
+        dist_desc_max, dist_desc_sol_max = self.d.distance_descente(self.H_max)
         
         i=0
         x_t_min=[0]
@@ -28,14 +28,14 @@ class Affichage_dist:
         while  y_t_min[-1]>= 0:
             if i < dist_mont_sol_max :
                 #y_t_min.append((self.v.vmax/1000)*m.sin(m.radians(gamma_montee))*i)
-                y_t_min.append(i*(H_max/dist_mont_sol_max))
+                y_t_min.append(i*(self.H_max/dist_mont_sol_max))
                 
             elif dist_mont_sol_max <i<dist_mont_sol_max +self.d.distance_croisiere(dist_mont_sol_max, dist_desc_sol_max):
-                y_t_min.append(H_max)
+                y_t_min.append(self.H_max)
                 i_cruise = i
             else :
                 #y_t_min.append(H_max-(self.v.vmax/1000)*m.sin(m.radians(gamma_desc)) * (i-i_cruise))
-                y_t_min.append(H_max-(i-i_cruise)*(H_max/dist_desc_sol_max))
+                y_t_min.append(self.H_max-(i-i_cruise)*(self.H_max/dist_desc_sol_max))
             x_t_min.append(i)
             i+=1
         y_t_min.pop(-1)
@@ -44,9 +44,9 @@ class Affichage_dist:
         return x_t_min,y_t_min
     
     def graphique_c_min(self):
-        H_conso = self.v.hcruise
-        dist_mont_conso, dist_mont_sol_conso = self.d.distance_montee(H_conso)
-        dist_desc_conso, dist_desc_sol_conso = self.d.distance_descente(H_conso)
+        self.H_conso = self.v.hcruise
+        dist_mont_conso, dist_mont_sol_conso = self.d.distance_montee(self.H_conso)
+        dist_desc_conso, dist_desc_sol_conso = self.d.distance_descente(self.H_conso)
         
         i=0
         x_c_min=[0]
@@ -54,14 +54,14 @@ class Affichage_dist:
         while  y_c_min[-1]>= 0:
             if i < dist_mont_sol_conso :
                 #y_c_min.append((self.c.v_conso/1000)*m.sin(m.radians(gamma_montee))*i)
-                y_c_min.append(i*(H_conso/dist_mont_sol_conso))
+                y_c_min.append(i*(self.H_conso/dist_mont_sol_conso))
                 
             elif dist_mont_sol_conso <i<dist_mont_sol_conso +self.d.distance_croisiere(dist_mont_sol_conso, dist_desc_sol_conso):
-                y_c_min.append(H_conso)
+                y_c_min.append(self.H_conso)
                 i_cruise = i
             else :
                 #y_c_min.append(H_conso-(self.c.v_conso/1000)*m.sin(m.radians(gamma_desc)) * (i-i_cruise))
-                y_c_min.append(H_conso-(i-i_cruise)*(H_conso/dist_desc_sol_conso))
+                y_c_min.append(self.H_conso-(i-i_cruise)*(self.H_conso/dist_desc_sol_conso))
             x_c_min.append(i)
             i+=1
         y_c_min.pop(-1)
@@ -80,6 +80,8 @@ class Affichage_dist:
         plt.title(' Proposition de plan de vol en fonction de la distance')
         plt.grid()
         plt.legend()
+        print(f"l'altitude pour un temps minimum est de " , self.H_max) 
+        print(f"l'altitude pour une consommation minimum est de " , self.H_conso)
         return plt.show()
 
     

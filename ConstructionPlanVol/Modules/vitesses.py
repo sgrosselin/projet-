@@ -7,7 +7,7 @@ T11km= 216.66           # Température au niveau de la limite troposphère-strat
 TSL = 288.15        # Température en K au niveau de la mer
 rhoSL = 1.225  # densite de reference en kg/m^3 au niveau de la mer
 g0 = 9.81  # attraction gravitationnelle, en m/s^2
-a = -0.0065  # constante d'evolution de temperature, en Kelvin/m
+a0 = -0.0065  # constante d'evolution de temperature, en Kelvin/m
 R = 287  # constante des gaz pour l'air, J / (kg K)
 gamma_desc = 3.5
 Cd0 = 0.015
@@ -53,13 +53,11 @@ class Vitesse :
         c,v,i_min=self.conso.consommation()
         Temp = self.Tliste[i_min]
         if Temp > T11km:
-            self.rho = rhoSL * (Temp / TSL) ** (-g0 / (a * R) - 1)  # kg/m^3
+            self.rho = rhoSL * (Temp / TSL) ** (-g0 / (a0 * R) - 1)  # kg/m^3
         else:
             self.hcruise = self.altitude[i_min]
-            rho11km = rhoSL * (T11km / TSL) ** (-g0 / (a * R) - 1)  # densite 11 km
+            rho11km = rhoSL * (T11km / TSL) ** (-g0 / (a0 * R) - 1)  # densite 11 km
             self.rho = rho11km * m.exp(-(g0 / (R * Temp)) * (self.hcruise - 11))  # densite apres 11 km
-        print("La densité est de", self.rho, "kg/m^3")
-        #print(m.sqrt(self.Avion.Wto*0.4535/(0.5*self.rho*Cltomax*self.Avion.s_alaire*0.0929))) #conversion ft^2 en m^2
         return m.sqrt(self.Avion.Wto*0.4535/(0.5*self.rho*Cltomax*self.Avion.s_alaire*0.0929)) #conversion ft^2 en m^2
     
 

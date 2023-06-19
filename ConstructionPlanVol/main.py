@@ -9,7 +9,8 @@ Created on Tue Jun 13 16:57:05 2023
 from Modules import Aircraft,Vitesse,Conso
 
 from Modules import Distance, Aeroports, Temps, Vitesse, Conso, Affichage, Affichage_dist
-
+#import Modules
+from Modules import Utilisateur
 
 avion = Aircraft()
 aeroport= Aeroports()
@@ -35,11 +36,10 @@ v.vitesse_decollage(conso) """
 #v.vitesse_max()
 
 tps = Temps(Dist,Vto,V_desc)
-a=Affichage(conso, vit, tps)
-b=Affichage_dist(conso, vit, Dist)
+b=Affichage(conso, vit, tps)
+a=Affichage_dist(conso, vit, Dist)
 
-a.plan_de_vol()
-b.plan_de_vol_dist()
+utilisateur = Utilisateur (a,b)
 
 #tps = Temps(D_montee,D_cruise,D_desc,Vto,Vmax,V_desc)
 #tps_mont, tps_cruise, tps_desc = tps.temps_mont(), tps.temps_cruise(), tps.temps_desc()

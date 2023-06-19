@@ -14,4 +14,5 @@ from .aeroport import Aeroports
 from .temps import Temps
 from .affichage import Affichage
 from .affichage_distance import Affichage_dist
+from .interface_utilisateur import Utilisateur
 

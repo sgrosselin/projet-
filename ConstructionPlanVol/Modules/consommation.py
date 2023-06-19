@@ -24,6 +24,7 @@ class Conso:
             else:
                 C_min=C_min     #C est en lb/lb.h
         self.v_conso=v_cruise[i_min]
+        
         return (round(C_min,5),self.v_conso, i_min)
 
 #c= Conso()
