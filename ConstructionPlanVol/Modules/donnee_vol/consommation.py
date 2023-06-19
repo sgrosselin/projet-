@@ -19,17 +19,20 @@ class Conso:
         v_max,v_cruise,temp=self.V.calcul_vitesse() #m/s
         for i, vkts_cruise in enumerate(v_cruise):
         #Nous allons comparer chaque valeurs de C_min que nous aurons calculé afin de ne retenir que la plus petite
-            C_min=1
+            self.C_min=1
             i_min=0
             C=(vkts_cruise*1.9438/self.Avion.range)*finesse_max*m.log(Rapport_poids_cruise)
              # la vitesse est en kts pour la formule de Breguet
-            if C<C_min:
-                C_min = C #C est en lb/lb.h
+            if C<self.C_min:
+                self.C_min = C #C est en lb/lb.h
                 i_min=i #On a besoin de garder la position de C_min dans la liste, afin de pouvoir réutilsier directement cette position dans nos calculs de vitesse, choix d'altitude ...
             else:
-                C_min=C_min     #C est en lb/lb.h
+                self.C_min=self.C_min     #C est en lb/lb.h
         self.v_conso=v_cruise[i_min]
 
-        return (round(C_min,5),self.v_conso, i_min)
+        return (round(self.C_min,5),self.v_conso, i_min)
+
+
+
 
 

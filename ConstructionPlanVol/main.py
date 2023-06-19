@@ -8,7 +8,7 @@ Created on Tue Jun 13 16:57:05 2023
 
 from Modules import Aircraft,Vitesse,Conso
 
-from Modules import Distance, Aeroports, Temps, Vitesse, Conso, Affichage, Affichage_dist
+from Modules import Distance, Aeroports, Temps, Vitesse, Conso, Affichage, Affichage_dist, Carburant
 #import Modules
 from Modules import Utilisateur
 
@@ -38,8 +38,8 @@ v.vitesse_decollage(conso) """
 tps = Temps(Dist,Vto,V_desc)
 b=Affichage(conso, vit, tps, aeroport)
 a=Affichage_dist(conso, vit, Dist, aeroport)
-
-utilisateur = Utilisateur (a,b)
+c=Carburant(avion, tps, vit, conso)
+utilisateur = Utilisateur (a,b, c)
 
 #tps = Temps(D_montee,D_cruise,D_desc,Vto,Vmax,V_desc)
 #tps_mont, tps_cruise, tps_desc = tps.temps_mont(), tps.temps_cruise(), tps.temps_desc()

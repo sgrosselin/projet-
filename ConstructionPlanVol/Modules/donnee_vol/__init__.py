@@ -10,3 +10,4 @@ from .vitesses import Vitesse
 from .consommation import Conso
 from .distance import Distance
 from .temps import Temps
+from .carburant import Carburant
