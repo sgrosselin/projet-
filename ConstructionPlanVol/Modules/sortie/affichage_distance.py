@@ -50,7 +50,7 @@ class Affichage_dist:
         dist_mont_conso, dist_mont_sol_conso = self.d.distance_montee(self.H_conso)
         dist_desc_conso, dist_desc_sol_conso = self.d.distance_descente(self.H_conso)
         
-        i=0
+        i=1
         x_c_min=[0]
         y_c_min=[392/3281] #On part de l'altiude de notre aeroport de départ qui est CDG. Mais c'est en ft donc on le mets en km.
         while  y_c_min[-1]>= self.a.altitude/3281: #Tant que notre avion n'a pas atteint l'altitude de notre aeroport d'arrivée, on continue d'implémenter
@@ -58,7 +58,7 @@ class Affichage_dist:
             #Si i est plus petit que le temps de montée que l'on a calculé, alors on ajoute à y la valeur de la fonction affine qui dépend du coefficient directeur pour la montée
                 y_c_min.append(i*(self.H_conso/dist_mont_sol_conso) + y_c_min[0])
                 
-            elif dist_mont_sol_conso <i<dist_mont_sol_conso +self.d.distance_croisiere(dist_mont_sol_conso, dist_desc_sol_conso):
+            elif dist_mont_sol_conso <i+1<dist_mont_sol_conso +self.d.distance_croisiere(dist_mont_sol_conso, dist_desc_sol_conso):
             #si i est dans le temps de la croisière, alors on ajoute à y l'altitude de notre croisière
                 y_c_min.append(self.H_conso)
                 i_cruise = i+1

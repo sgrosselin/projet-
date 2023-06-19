@@ -13,3 +13,4 @@ class Carburant:
         Dvol = self.t.temps_total(self.c.v_conso, self.v.hcruise)/3600
         Q = self.c.C_min * Poussee * Dvol
         return Q
+

@@ -13,7 +13,7 @@ class Affichage:
     #Cette fonction ressort les valeurs de x et y pour un plan de vol avec un temps minimum
     def graphique_altitude_t_min(self):
         i_max, H_max = self.v.valeur_vitesse_max()
-        i=0
+        i=1
         y_t_min=[392/3281] #On part de l'altiude de notre aeroport de départ qui est CDG. Mais c'est en ft donc on le mets en km.
         x_t_min=[0]
         i_cruise=0
@@ -26,7 +26,7 @@ class Affichage:
             elif self.t.temps_mont(H_max)<i<self.t.temps_mont(H_max)+self.t.temps_cruise(self.v.vmax,H_max):
             #si i est dans le temps de la croisière, alors on ajoute à y l'altitude de notre croisière
                 y_t_min.append(H_max)
-                i_cruise = i-1
+                i_cruise = i+1
             else :
             # si i est dans le temps de descente, on ajoute à y la valeur de la fonction affine qui dépaend du coefficient directeur pour la descente
                 y_t_min.append(H_max-((H_max/self.t.temps_desc() * (i-i_cruise)) + y_t_min[0]))
