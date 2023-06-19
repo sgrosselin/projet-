@@ -6,9 +6,7 @@ Created on Mon Jun 19 11:19:25 2023
 @author: salome
 """
 import matplotlib.pyplot as plt
-import math as m
-gamma_montee=3
-gamma_desc = 3.5
+
 
 
 class Affichage_dist:
@@ -75,13 +73,13 @@ class Affichage_dist:
         x_c_min, y_conso_min = self.graphique_c_min()
         plt.plot(x_t_min, y_t_min, label='Trajet avec un temps minimum')
         plt.plot(x_c_min, y_conso_min, label='Trajet avec une consommation minimum')
-        plt.xlabel('distane en km')
+        plt.xlabel('distance en km')
         plt.ylabel('Altitude en km')
         plt.title(' Proposition de plan de vol en fonction de la distance')
         plt.grid()
         plt.legend()
-        print(f"l'altitude pour un temps minimum est de " , self.H_max) 
-        print(f"l'altitude pour une consommation minimum est de " , self.H_conso)
+        print(f"l'altitude pour un temps minimum est de " , self.H_max,"km") 
+        print(f"l'altitude pour une consommation minimum est de " , self.H_conso,"km")
         return plt.show()
 
     

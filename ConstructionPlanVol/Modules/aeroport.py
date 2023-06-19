@@ -31,7 +31,7 @@ class Aeroports:
         # distance entre les 2 points, comptée sur un arc de grand cercle
         dist_aeroports = (S * (RT+H))/1000     ## m en km
         #print(f"Vôtre destination est", self.destination)
-        print(f"Vous êtes à",dist_aeroports, " de l'aéroport d'arrivé")
+        print(f"Vous êtes à",round(dist_aeroports,2), " km de l'aéroport d'arrivé")
         return dist_aeroports
 
 

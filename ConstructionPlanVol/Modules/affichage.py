@@ -1,7 +1,5 @@
 import matplotlib.pyplot as plt
-import math as m
-gamma_montee=3
-gamma_desc = 3.5
+
 
 
 class Affichage:
@@ -17,14 +15,14 @@ class Affichage:
         x_t_min=[0]
         i_cruise=0
         while  y_t_min[-1]>= 0:
-            if i < self.t.temps_mont(self.v.vmax,H_max):
-                y_t_min.append((H_max/self.t.temps_mont(self.v.vmax,H_max)) * i)
+            if i < self.t.temps_mont(H_max):
+                y_t_min.append((H_max/self.t.temps_mont(H_max)) * i)
                 
-            elif self.t.temps_mont(self.v.vmax,H_max)<i<self.t.temps_mont(self.v.vmax,H_max)+self.t.temps_cruise(self.v.vmax,H_max):
+            elif self.t.temps_mont(H_max)<i<self.t.temps_mont(H_max)+self.t.temps_cruise(self.v.vmax,H_max):
                 y_t_min.append(H_max)
                 i_cruise = i
             else :
-                y_t_min.append(H_max-(H_max/self.t.temps_mont(self.v.vmax,H_max) * (i-i_cruise)))
+                y_t_min.append(H_max-(H_max/self.t.temps_desc() * (i-i_cruise)))
                 
             x_t_min.append(i)
             i+=1
@@ -41,14 +39,14 @@ class Affichage:
         x_c_min=[0]
         i_cruise=0
         while y_conso_min[-1]>= 0:
-            if i < self.t.temps_mont(self.c.v_conso,H_conso):
-                y_conso_min.append((H_conso/self.t.temps_mont(self.c.v_conso,H_conso)) * i)
+            if i < self.t.temps_mont(H_conso):
+                y_conso_min.append((H_conso/self.t.temps_mont(H_conso)) * i)
             
-            elif self.t.temps_mont(self.c.v_conso,H_conso)<i<self.t.temps_mont(self.c.v_conso,H_conso)+self.t.temps_cruise(self.c.v_conso,H_conso):
+            elif self.t.temps_mont(H_conso)<i<self.t.temps_mont(H_conso)+self.t.temps_cruise(self.c.v_conso,H_conso):
                 y_conso_min.append(H_conso)
                 i_cruise = i
             else :
-                y_conso_min.append(H_conso-(i-i_cruise)*(H_conso/self.t.temps_mont(self.c.v_conso,H_conso)))
+                y_conso_min.append(H_conso-(i-i_cruise)*(H_conso/self.t.temps_desc()))
             x_c_min.append(i)
             i+=1
         x_c_min.pop(-1)
@@ -66,8 +64,8 @@ class Affichage:
         plt.title(' Proposition de plan de vol')
         plt.grid()
         plt.legend()
-        print(f"Avec la courbe bleu, le temps de trajet est de ", self.t.temps_total(self.v.vmax, H_max)/3600, "heures")
-        print(f"Avec la courbe orange, le temps de trajet est de ", self.t.temps_total(self.c.v_conso, self.v.hcruise)/3600, "heures")
+        print(f"Avec la courbe bleu, le temps de trajet est de ", round(self.t.temps_total(self.v.vmax, H_max)/3600,2), "heures")
+        print(f"Avec la courbe orange, le temps de trajet est de ", round(self.t.temps_total(self.c.v_conso, self.v.hcruise)/3600,2), "heures")
         return plt.show()
 
 

@@ -62,7 +62,6 @@ class Vitesse :
     
 
     def vitesse_decollage(self,conso):
-        print(1.1*self.vitesse_decrochage(conso))
         return 1.1*self.vitesse_decrochage(conso)
 
     def vitesse_descente(self):

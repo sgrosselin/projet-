@@ -1,6 +1,6 @@
 import math as m
-angle_montee = 3    # En degrée
-angle_descente = 3.5 # En degrée
+angle_montee = 5    # En degrée
+angle_descente = 5 # En degrée
 class Distance:
 
 
