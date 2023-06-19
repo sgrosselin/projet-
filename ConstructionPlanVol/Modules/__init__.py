@@ -6,13 +6,11 @@ Created on Tue Jun 13 16:52:49 2023
 @author: salome
 """
 
-from .vitesses import Vitesse
-from .consommation import Conso
-from .aircraft import Aircraft
-from .distance import Distance
-from .aeroport import Aeroports
-from .temps import Temps
-from .affichage import Affichage
-from .affichage_distance import Affichage_dist
-from .interface_utilisateur import Utilisateur
+
+from .sortie import *
+from .Entree import *
+
+from .dist_temps import *
+from .avion import *
+
 
