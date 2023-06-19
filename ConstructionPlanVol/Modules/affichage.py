@@ -16,7 +16,6 @@ class Affichage:
         y_t_min=[0]
         x_t_min=[0]
         i_cruise=0
-        #while i< self.t.temps_total(self.v.vmax):
         while  y_t_min[-1]>= 0:
             if i < self.t.temps_mont(self.v.vmax,H_max):
                 y_t_min.append((self.v.vmax/1000)*m.sin(m.radians(gamma_montee))*i)

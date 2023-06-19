@@ -8,7 +8,7 @@ Created on Tue Jun 13 16:57:05 2023
 
 from Modules import Aircraft,Vitesse,Conso
 
-from Modules import Distance, Aeroports, Temps, Vitesse, Conso, Affichage
+from Modules import Distance, Aeroports, Temps, Vitesse, Conso, Affichage, Affichage_dist
 
 
 avion = Aircraft()
@@ -36,8 +36,11 @@ v.vitesse_decollage(conso) """
 
 tps = Temps(Dist,Vto,V_desc)
 a=Affichage(conso, vit, tps)
+b=Affichage_dist(conso, vit, Dist)
 
 a.plan_de_vol()
+b.plan_de_vol_dist()
+
 #tps = Temps(D_montee,D_cruise,D_desc,Vto,Vmax,V_desc)
 #tps_mont, tps_cruise, tps_desc = tps.temps_mont(), tps.temps_cruise(), tps.temps_desc()
 #print(tps.temps_total(tps_mont, tps_cruise, tps_desc)/3600)
