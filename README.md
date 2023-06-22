@@ -5,8 +5,11 @@ TITRE : SIMULATION ET OPTIMISATION DE TRAJECTOIRES DE VOL
 Plan du README : 
 
 I - INTRODUCTION
+
 II - EXPLICATION DU CODE
+
 III - EXEMPLE D'UTILISATION
+
 
 
 
@@ -16,7 +19,7 @@ I - INTRODUCTION
 Les pilotes d'avions ont de nombreuses tâches à réaliser avant de pouvoir finalement pouvoir embarquer et l'une d'elle se trouve être la création de leur plans de vol.
 C'est pourquoi, nous avons décidé de créer un programme qui permet au pilote de les aider à réaliser cette trajectoire de vol. Celle-ci sera apr la suite optimisée, puisque nous proposerons au pilote 2 trajectoires :
 - La première sera la trajectoire la plus rapide, en utilisant donc une vitesse maximale pendant la phase de croisière en fonction de l'avion.
-- La seconde sera cella qui utilisera le moins de carburant, c'est à dire qui aura une consommation spécifique minimale.
+- La seconde sera celle qui utilisera le moins de carburant, c'est à dire qui aura une consommation spécifique minimale.
 
 Des courbes lui seront finalement proposées afin de mieux l'aider à visualiser les trajectoires. Il pourra étudier une courbe de l'altitude en fonction du temps et une courbe de l'altitude en fonction de la distance.
 
@@ -40,10 +43,10 @@ Le module "Donnée de vol" va permettre au programme de calculer toutes les vale
 Nous allons expliquer ce que réalise chacunes de ces classes et nous commencons avec la classe vitesse :  
 Tout d'abord, la classe vitesse permet de calculer les vitesses des différentes phases de vols, mais aussi de la trajectoire que l'on souhaite optimiser (temps le plus rapide ou consommation minimum).
 Elle va prendre en attribut la classe "Aircraft" que nous avons expliqué ci-dessus et elle contient 5 fonctions. La première fonction "calcul_vitesse" va calculer et retourner une liste de vitesses pour la phase de vol de croisière. Cela signifie qu'elle va calculer des vitesses à la fois à Mach maximal et à Mach de croisière. Elle utilisera pour cela une boucle "for" qui va parcourir une liste d'altitude et elle va utiliser 2 formules en focntions de si l'on se trouve en troposphère ou en stratosphère.
-- La fonction "valur_vitesse_max" permet de retourner la valeur maximale dans la liste des vitesses maximales.
+- La fonction "valeur_vitesse_max" permet de retourner la valeur maximale dans la liste des vitesses maximales.
 - La fonction "vitesse_decrochage" utilise les valeurs retournées dans la classe consommation afin d'obtenir la position dans la liste voulue et de l'utiliser pour retrouver la valeur de température à la même position. On va ainsi calculer la vitesse de décrochage.
 - La fonction "vitesse_decollage" permet d'obtenir la vitesse pendant la phase de décollage de l'avion. Pour cela elle utilise la valeur calculée dans la fonction "vitesse_decrochage".
-- Finalement, la focntion "vitesse_descente" permet, à l'aide du coefficient de trainée et du coefficient d'oswald, de caculer la vitesse pendant la phase de descente de l'avion.
+- Finalement, la fonction "vitesse_descente" permet, à l'aide du coefficient de trainée et du coefficient d'oswald, de caculer la vitesse pendant la phase de descente de l'avion.
 
 La classe temps permet de calculer les temps pour les différentes phases de vols. Elle contient 4 fonctions, une pour chaques phase de vol et une qui calcule el temps total. C'est calcul seront réalisés à l'aide de la formule : V= D/T et nous utiliserons les vitesses appropriées et calculées dans la classe précédentes.
 
@@ -66,27 +69,45 @@ III - EXEMPLE D'UTILISATION
 Nous allons maintenant réaliser un exemple d'utilisation. Il faut commencer par lancer la fichier "main.py" qui se trouve sur la github. Ce programme va vous demander d'entrer l'avion que vous souhaitez. Vous pouvez aller observer la base de données proposées ou entrer un de ces avions ci-dessous :
 
 A321
+
 B737
+
 A320neo
+
 A321neoXLR
+
 A320
+
 A220
+
 A330
+
 A350-900
+
 A350-1000
+
 ACJ220
+
 B777
+
 ACJ319neo
+
 ACJ320neo
+
 ACJ330
+
 B747
 
 Une fois l'avion choisi, le programme va vous demander d'entrer l'aéroport de destination voulu. Vous pouvez chosir parmis les sigles de ces aéroports: 
 
 JFK
+
 YUL
+
 LIS
+
 CAI
+
 HEL
 
 Le programme va ainsi vous afficher les propositions de plan de vols en fonction de l'avion et de l'aéroport d'arrivée choisi. Il vous indiquera aussi le temps que vous allez mettre et la consommation de votre avion pendant ce vol.
