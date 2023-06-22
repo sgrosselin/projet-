@@ -1,8 +1,8 @@
 # projet_final_MGA802
 
-TITRE : SIMULATION ET OPTIMISATION DE TRAJECTOIRES DE VOL
+**TITRE : SIMULATION ET OPTIMISATION DE TRAJECTOIRES DE VOL**
 
-Plan du README : 
+**Plan du README : **
 
 I - INTRODUCTION
 
@@ -13,7 +13,7 @@ III - EXEMPLE D'UTILISATION
 
 
 
-I - INTRODUCTION
+**I - INTRODUCTION**
 
 
 Les pilotes d'avions ont de nombreuses tâches à réaliser avant de pouvoir finalement pouvoir embarquer et l'une d'elle se trouve être la création de leur plans de vol.
@@ -27,7 +27,7 @@ Nous avons choisi de fixer l'aéroport de départ. Dans notre code, il s'agit de
 Par la suite, le pilote va pouvoir choisir quel avion il souhaite utiliser, parmis ceux proposés dans notre base de donnée, mais il va aussi pouvoir choisir l'aéroport d'arrivée dans une autre base de donnée.
 Ci-dessous, nous allons vous expliquer comment bien utiliser ntore code pour réaliser ce que vous souhaitez.
 
-II - EXPLICATION DU CODE
+**II - EXPLICATION DU CODE**
 
 Notre code est composé de 3 modules ainsi que d'un fichier "main.py" qui permet de lancer le programme et d'appeler toutes les classes nécéssaires. Les 3 modules sont les suivants: 
 - Donnée de vol 
@@ -64,7 +64,7 @@ Les classes affichage_temps et affichage temps fonctionne de la même façons. E
 Elle va ainsi calculer la pente de la courbe en fonction de ces différentes phases. Puis, la focntion "plan_de_vol" va afficher le graphe qui contient les courbes de consommation minimum et de temps minimum en fonction de la distance et du temps. La focntion "update" va permettre à l'utilisateur de mieux visualiser la vitesse utilisées pendant les phases, car il pourra observer 2 avions parcourir ces différents graphes.
 
 
-III - EXEMPLE D'UTILISATION
+**III - EXEMPLE D'UTILISATION**
 
 Nous allons maintenant réaliser un exemple d'utilisation. Il faut commencer par lancer la fichier "main.py" qui se trouve sur la github. Ce programme va vous demander d'entrer l'avion que vous souhaitez. Vous pouvez aller observer la base de données proposées ou entrer un de ces avions ci-dessous :
 
