@@ -122,7 +122,13 @@ Nous obtenons donc les résultats suivants :
 
 
 ![Capture d’écran 2023-07-01 004159](https://github.com/sgrosselin/projet_final_MGA802/assets/133153873/604f7f45-00bd-4d38-9437-7b49ffe3a322)
+
 ***Graphique des deux propositions de plans de vol en fonction du temps***
+
+
+![Capture d’écran 2023-07-01 005204](https://github.com/sgrosselin/projet_final_MGA802/assets/133153873/1d3120a5-5ef9-407f-89fe-f3cd26c5a026)
+
+***Graphique des deux propositions de plans de vol en fonction de la distance***
 
 
 
