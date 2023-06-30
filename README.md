@@ -111,7 +111,7 @@ CAI
 HEL
 
 Le programme va ainsi vous afficher les propositions de plan de vols en fonction de l'avion et de l'aéroport d'arrivée choisi. Il vous indiquera aussi le temps que vous allez mettre et la consommation de votre avion pendant ce vol.
- Ainsi, si vosu choississez l'avion "B777" et l'aéroport d'arrivée "YUL", vous obtiendrez une trajectoire de vol pour un temps minimal de 6 h 6 min à une altitude de 5.04 km ainsi qu'une trajectoire de vol pour une consommation minimale de 7 h 49 min , à une altitude de 12.94 km pour une consommation de 85375 lbs.
+ Ainsi, si vous choississez l'avion "B777" et l'aéroport d'arrivée "YUL", vous obtiendrez une trajectoire de vol pour un temps minimal de 6 h 6 min à une altitude de 5.04 km ainsi qu'une trajectoire de vol pour une consommation minimale de 7 h 49 min , à une altitude de 12.94 km pour une consommation de 85375 lbs.
  
 
 
