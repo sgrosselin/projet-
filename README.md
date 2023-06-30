@@ -17,8 +17,9 @@ III - EXEMPLE D'UTILISATION
 
 Les pilotes d'avions ont de nombreuses tâches à réaliser avant de pouvoir finalement pouvoir embarquer et l'une d'elle se trouve être la création de leur plans de vol.
 C'est pourquoi, nous avons décidé de créer un programme qui permet au pilote de les aider à réaliser cette trajectoire de vol. Celle-ci sera par la suite optimisée, puisque nous proposerons au pilote 2 trajectoires :
-> La première sera la trajectoire la plus rapide, en utilisant donc une vitesse maximale pendant la phase de croisière en fonction de l'avion.
-> La seconde sera celle qui utilisera le moins de carburant, c'est à dire qui aura une consommation spécifique minimale.
+
+> La première sera la trajectoire la plus rapide, en utilisant donc une vitesse maximale pendant la phase de croisière en fonction de l'avion.  
+> La seconde sera celle qui utilisera le moins de carburant, c'est à dire qui aura une consommation spécifique minimale.  
 
 Des courbes lui seront finalement proposées afin de mieux l'aider à visualiser les trajectoires. Il pourra étudier une courbe de l'altitude en fonction du temps et une courbe de l'altitude en fonction de la distance.
 
