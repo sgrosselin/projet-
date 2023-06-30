@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import matplotlib.pyplot as plt
-
+import numpy as np
 #Cette classe permet d'afficher l'altitude de l'avion en fonction de la distance
 
 class Affichage_dist:
@@ -103,27 +103,130 @@ class Affichage_dist:
         return x_c_min,y_c_min
 
 
-    def plan_de_vol_dist(self):
+    def plan_de_vol_dist(self, lat, long):
         """
         Fonction qui va tracer le plan de vol pour un vol à consommation minimale et pour un temps minimal en fonction de la distance
 
-        :return: Le tracé réalisé
+         :return: Le tracé réalisé
 
         """
-    # Cette fonction affiche un graphique avec deux courbes, une pour le temps minimum et une pour la consommation minimum, le tout en fonction de la distance
         x_t_min, y_t_min = self.graphique_t_min()
         x_c_min, y_conso_min = self.graphique_c_min()
-        plt.figure(2)
-        plt.plot(x_t_min, y_t_min, label='Trajet avec un temps minimum')
-        plt.plot(x_c_min, y_conso_min, label='Trajet avec une consommation minimum')
-        plt.xlabel('Distance en km')
-        plt.ylabel('Altitude en km')
-        plt.title(' Proposition de plan de vol en fonction de la distance')
-        plt.grid()
-        plt.legend()
-        print(f"l'altitude pour un temps minimum est de " , round((self.H_max+self.arrivee),2),"km")
-        print(f"l'altitude pour une consommation minimum est de " ,round( (self.H_conso+self.arrivee),2),"km")
-        return plt.show()
+
+        # Coordonnées des aéroports
+        paris_longitude = np.deg2rad(2.3522)
+        paris_latitude = np.deg2rad(48.8566)
+        arrive_longitude = np.deg2rad(long)
+        arrive_latitude = np.deg2rad(lat)
+
+        # Listes des altitudes correspondantes à la trajectoire des avions
+        y_avion1 = y_t_min
+        y_avion2 = y_conso_min
+
+        # Création de la figure et des axes 3D
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+
+        # Coordonnées sphériques de la Terre
+        u = np.linspace(0, 2 * np.pi, 100)
+        v = np.linspace(0, np.pi, 50)
+        earth_radius = 6371
+
+        # Tracé de la sphère creuse représentant la Terre
+        x = earth_radius * np.outer(np.cos(u), np.sin(v))
+        y = earth_radius * np.outer(np.sin(u), np.sin(v))
+        z = earth_radius * np.outer(np.ones(np.size(u)), np.cos(v))
+        ax.plot_surface(x, y, z, alpha=0.3, edgecolor='none')
+
+        # Tracé des aéroports
+        ax.scatter([earth_radius * np.cos(paris_longitude) * np.sin(paris_latitude)],
+                   [earth_radius * np.sin(paris_longitude) * np.sin(paris_latitude)],
+                   [earth_radius * np.cos(paris_latitude)],
+                   marker='o', s=50, color='red', label='Paris')
+        ax.scatter([earth_radius * np.cos(arrive_longitude) * np.sin(arrive_latitude)],
+                   [earth_radius * np.sin(arrive_longitude) * np.sin(arrive_latitude)],
+                   [earth_radius * np.cos(arrive_latitude)],
+                   marker='o', s=50, color='blue', label="Arrivée")
+
+        # Initialisation des avions
+        plane1 = ax.plot([], [], [], marker='o', markersize=5, color='green', label='Trajet avec un temps minimal')[0]
+        trajectory1 = ax.plot([], [], [], color='green', linewidth=1, zorder=2)[0]
+        plane2 = \
+        ax.plot([], [], [], marker='o', markersize=5, color='orange', label='Trajet avec un consommation minimale')[0]
+        trajectory2 = ax.plot([], [], [], color='orange', linewidth=1, zorder=2)[0]
+
+        # Fonctions pour calculer les coordonnées des avions à un temps donné
+        def calculate_plane_position_avion1(t):
+            # Calcul de l'arc géodésique depuis Paris pour le premier avion
+            arc_longitude = paris_longitude + t * (arrive_longitude - paris_longitude)
+            arc_latitude = paris_latitude + t * (arrive_latitude - paris_latitude)
+            altitude1 = y_avion1[int(t * (len(y_avion1) - 1))] * 100
+            x_plane = (earth_radius + altitude1) * np.cos(arc_longitude) * np.sin(arc_latitude)
+            y_plane = (earth_radius + altitude1) * np.sin(arc_longitude) * np.sin(arc_latitude)
+            z_plane = (earth_radius + altitude1) * np.cos(arc_latitude)
+            return x_plane, y_plane, z_plane
+
+        def calculate_plane_position_avion2(i):
+            # Calcul de l'arc géodésique depuis Paris pour le deuxième avion
+            arc_longitude = paris_longitude + t * (arrive_longitude - paris_longitude)
+            arc_latitude = paris_latitude + t * (arrive_latitude - paris_latitude)
+            altitude2 = y_avion2[int(t * (len(y_avion2) - 1))] * 100
+            x_plane = (earth_radius + altitude2) * np.cos(arc_longitude) * np.sin(arc_latitude)
+            y_plane = (earth_radius + altitude2) * np.sin(arc_longitude) * np.sin(arc_latitude)
+            z_plane = (earth_radius + altitude2) * np.cos(arc_latitude)
+            return x_plane, y_plane, z_plane
+
+        # Animation du mouvement des avions
+        t_values = np.linspace(0, 1, len(y_avion1))
+
+        t_values2 = np.linspace(0, 1, len(y_avion2))
+
+        x_trajectory1, y_trajectory1, z_trajectory1 = [], [], []  # Trajectoire du premier avion
+        x_trajectory2, y_trajectory2, z_trajectory2 = [], [], []  # Trajectoire du deuxième avion
+
+        for t, i in zip(t_values, t_values2):
+            # Effacer le graphique précédent des avions et des trajectoires
+            plane1.set_data([], [])
+            plane1.set_3d_properties([])
+            trajectory1.set_data([], [])
+            trajectory1.set_3d_properties([])
+            plane2.set_data([], [])
+            plane2.set_3d_properties([])
+            trajectory2.set_data([], [])
+            trajectory2.set_3d_properties([])
+
+            # Calcul des nouvelles coordonnées des avions
+            x_plane1, y_plane1, z_plane1 = calculate_plane_position_avion1(t)
+            x_plane2, y_plane2, z_plane2 = calculate_plane_position_avion2(i)
+
+            # Mise à jour des coordonnées des avions et des trajectoires
+            plane1.set_data(x_plane1, y_plane1)
+            plane1.set_3d_properties(z_plane1)
+            x_trajectory1.append(x_plane1)
+            y_trajectory1.append(y_plane1)
+            z_trajectory1.append(z_plane1)
+            trajectory1.set_data(x_trajectory1, y_trajectory1)
+            trajectory1.set_3d_properties(z_trajectory1)
+            plane2.set_data(x_plane2, y_plane2)
+            plane2.set_3d_properties(z_plane2)
+            x_trajectory2.append(x_plane2)
+            y_trajectory2.append(y_plane2)
+            z_trajectory2.append(z_plane2)
+            trajectory2.set_data(x_trajectory2, y_trajectory2)
+            trajectory2.set_3d_properties(z_trajectory2)
+
+            # Affichage de la figure
+            plt.pause(0.001)
+
+            # Configuration des axes
+            ax.set_xlabel('X')
+            ax.set_ylabel('Y')
+            ax.set_zlabel('Z')
+            ax.set_title('Visualisation des plans de vol')
+            ax.legend()
+
+            # Affichage de la figure finale
+        plt.show()
 
     
     

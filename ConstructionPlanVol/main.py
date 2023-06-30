@@ -19,6 +19,8 @@ conso=Conso(avion,vit)
 
 
 s=aeroport.distance_aeroports()
+lat_arrive,long_arrive=aeroport.coordonnees_arrive()
+
 Dist = Distance(vit, s)
 
 
@@ -26,7 +28,7 @@ tps = Temps(Dist,vit, conso)
 b=Affichage(conso, vit, tps, aeroport)
 a=Affichage_dist(conso, vit, Dist, aeroport)
 c=Carburant(avion, tps, vit, conso)
-utilisateur = Utilisateur (a,b, c)
+utilisateur = Utilisateur (a,b, c, lat_arrive, long_arrive)
 
 
 

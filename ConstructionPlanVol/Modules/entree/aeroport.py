@@ -45,6 +45,6 @@ class Aeroports:
         print(f"Vous êtes à",round(dist_aeroports,2), " km de l'aéroport d'arrivé")
         return dist_aeroports
 
-
-
+    def coordonnees_arrive(self):
+        return self.latitude_arr, self.longitude_arr
 

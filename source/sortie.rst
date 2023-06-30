@@ -1,8 +1,6 @@
 Module sortie
 ==============
 
-=
-
 Fichier affichage\_distance.py
 ---------------------------------
 

@@ -12,7 +12,7 @@ class Utilisateur:
         - aff_tps (Classe) : Classe Affichage créee dans le fichier affichage_temps.py
         - conso (Classe) : La classe conso de l'avion choisi dans le fichier consommation.py
     """
-    def __init__(self,aff_dist, aff_tps, conso):
+    def __init__(self,aff_dist, aff_tps, conso, lat, long):
         """
             Initialise la classe Utilisateur
 
@@ -24,6 +24,9 @@ class Utilisateur:
         self.aff_dist = aff_dist
         self.aff_tps = aff_tps
         self.c = conso
+        self.lat = lat
+        self.long = long
+
 
 
       
@@ -35,6 +38,6 @@ class Utilisateur:
 
         print("\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
         print("Voici les deux proposition en fonction de la distance :\n")
-        print(self.aff_dist.plan_de_vol_dist())
+        print(self.aff_dist.plan_de_vol_dist(lat,long))
 
         print(f"Pour le vol avec une consommation minimale, ",round(self.c.carburant_consommee_minimal(),3),"lbs de carburant ont été consommé" )
