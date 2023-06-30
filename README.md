@@ -114,7 +114,12 @@ Une fois l'avion choisi, le programme va vous demander d'entrer l'aéroport de d
 >>HEL
 
 Le programme va ainsi vous afficher les propositions de plan de vols en fonction de l'avion et de l'aéroport d'arrivée choisi. Il vous indiquera aussi le temps que vous allez mettre et la consommation de votre avion pendant ce vol.
-Ainsi, si vous choississez l'avion "B777" et l'aéroport d'arrivée "YUL", vous obtiendrez une trajectoire de vol pour un temps minimal de 6 h 6 min à une altitude de 5.04 km ainsi qu'une trajectoire de vol pour une consommation minimale de 7 h 49 min , à une altitude de 12.94 km pour une consommation de 85375 lbs.
+Ainsi, si vous choississez l'avion "B777" et l'aéroport d'arrivée "YUL", vous obtiendrez une trajectoire de vol pour un temps minimal de 6 h 01 min à une altitude de 5.04 km ainsi qu'une trajectoire de vol pour une consommation minimale de 8 h 22 min , à une altitude de 12.94 km pour une consommation de 85375 lbs.
+Il faut attendre un petit peu afin de voir s'afficher els différents résultats, car le programme réalise une boucle pour chaque itération et donc déplacement de l'avion.
+Nous obtenons donc les résultats suivants :
+![Capture d’écran 2023-07-01 004159](https://github.com/sgrosselin/projet_final_MGA802/assets/133153873/604f7f45-00bd-4d38-9437-7b49ffe3a322)
+
+
  
 
 
