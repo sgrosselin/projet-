@@ -30,13 +30,13 @@ Ci-dessous, nous allons vous expliquer comment bien utiliser ntore code pour ré
 **II - EXPLICATION DU CODE**
 
 Notre code est composé de 3 modules ainsi que d'un fichier "main.py" qui permet de lancer le programme et d'appeler toutes les classes nécéssaires. Les 3 modules sont les suivants: 
-- Donnée de vol 
-- Entrée 
-- Sortie
+>- Donnée de vol 
+>- Entrée 
+>- Sortie
 Chacun de ses modules contient un fichier "__init__".
 Nous allons maintenant vous expliquer ce que chacun de ces modules contient. Tout d'abord, comme son nom l'indique, le module "Entrée" va contenir les différentes classes qui vont permettre à l'utilisateur d'aller récupérer les bases de données.
-C'est à dire que nous avons les classes "Aéroport" et "Aircraft" qui appellent chacunes leur base de donnée qui leur est propre. La base de données Aéroport contient 5 choix d'aéroport avec la position de ceux-ci, tandis que la classe Aircraft contient 15 choix d'avions, ainsi que leurs différentes caractéristiques.
-Ces 2 classes vont lire les différents fichiers csv et vont attribuer chacune de slignes et des colonnes à des noms que nosu pourront réutiliser dans les différentes classes et fonctions.
+C'est à dire que nous avons les classes "Aéroport" et "Aircraft" qui appellent chacunes leur base de donnée qui leur est propre. La base de données Aéroport contient 5 choix d'aéroports avec la position de ceux-ci, tandis que la classe Aircraft contient 15 choix d'avions, ainsi que leurs différentes caractéristiques.
+Ces 2 classes vont lire les différents fichiers csv et vont attribuer chacune des lignes et des colonnes à des noms que nosu pourront réutiliser dans les différentes classes et fonctions.
 
 
 Le module "Donnée de vol" va permettre au programme de calculer toutes les valeurs et variables nécéssaires pour obtenir le plan de vol. Il est constitué des classes consommation, carburant, temps, distance et vitesses.
@@ -48,19 +48,19 @@ Elle va prendre en attribut la classe "Aircraft" que nous avons expliqué ci-des
 - La fonction "vitesse_decollage" permet d'obtenir la vitesse pendant la phase de décollage de l'avion. Pour cela elle utilise la valeur calculée dans la fonction "vitesse_decrochage".
 - Finalement, la fonction "vitesse_descente" permet, à l'aide du coefficient de trainée et du coefficient d'oswald, de caculer la vitesse pendant la phase de descente de l'avion.
 
-La classe temps permet de calculer les temps pour les différentes phases de vols. Elle contient 4 fonctions, une pour chaques phase de vol et une qui calcule el temps total. C'est calcul seront réalisés à l'aide de la formule : V= D/T et nous utiliserons les vitesses appropriées et calculées dans la classe précédentes.
+La classe temps permet de calculer les temps pour les différentes phases de vols. Elle contient 4 fonctions, une pour chaques phase de vol et une qui calcule le temps total. Ces calculs seront réalisés en considérant une vitesse constante sur chaque phase et nous utiliserons les vitesses appropriées et calculées dans la classe précédentes.
 
 La classe distance permet de calculer les distances pour les différentes phases de vols. Elle contient 3 fonctions, une pour chaque phases de vol. Chaque focntions va calculer à la fois la distance aprcourue par l'avion, mais uassi la distance parcourue par rapport au sol.
 
-La classe consommation contient en attribut les classes "Aircraft" et "vitesses" et elel va eprmettre au programme de calculer la consomamtion spécifique de l'avion pendant la phase de croisière. Pour cela, elle va utilsier la formule de breguet ainsi qu ela liste de vitesse à Mach Croisière, retournées dans la classe "vitesse".
+La classe consommation contient en attribut les classes "Aircraft" et "vitesses" et elle va permettre au programme de calculer la consommation de l'avion pendant la phase de croisière. Pour cela, elle va utilsier la formule de breguet ainsi que la liste de vitesse à Mach Croisière, retournées dans la classe "vitesse".
 Elle va parcourir la liste de vitesse, calculer la consommation spécifique et comparer avec la valeur calculée précédemment pour savoir laquelle est la plus petite. Elle ne va ainsi retenir que la valeur de la consommation spécifique la plus petite. A ce moement là, la fonction va return la valeur de cette consomamtion spécifique, sa position dans la liste ainsi que la valeur de la viesse utilisée pour cette consommation là.
 
 Finalement, la classe carburant permet de calculer le carburant consommé pendant toute la durée du vol.
 
 
 Le module "sortie" permet à l'utilisateur de pouvoir observer les différentes courbes et trajectoire proposées. De ce fait, il contient les classes affichage_distance, affichage_temps et interface_utilisateur.
-La classe interface_utilisateur, peremt d'afficher les différents graphiques ainsi que d'afficher les valeurs du temsp pour les 2 propositions, des altitudes ainsi que des consommations spécifique et de carburants.
-Les classes affichage_temps et affichage temps fonctionne de la même façons. Elles permettent de créer et plot les graphiques en fonctions du temps et de la distance. Elles vont pour cela parcourir une boucle while, qui ne s'arrete que lorsque l'avion a atteint l'altitude de l'aéroport d'arrivée. Puis elles vont rencontrer trois possibilités de calcul: soit nous sommes pendant la phase de montée, soit de crosiire, soit de descente. 
+La classe interface_utilisateur, peremt d'afficher les différents graphiques ainsi que d'afficher les valeurs du temps pour les 2 propositions, des altitudes ainsi que des consommations spécifique et de carburants.
+Les classes affichage_temps et affichage_distance fonctionnent de la même façon. Elles permettent de créer et de tracer les graphiques en fonctions du temps et de la distance. Elles vont pour cela parcourir une boucle while, qui ne s'arrête que lorsque l'avion a atteint l'altitude de l'aéroport d'arrivée. Puis elles vont rencontrer trois possibilités de calcul: soit nous sommes pendant la phase de montée, soit de crosiire, soit de descente. 
 Elle va ainsi calculer la pente de la courbe en fonction de ces différentes phases. Puis, la focntion "plan_de_vol" va afficher le graphe qui contient les courbes de consommation minimum et de temps minimum en fonction de la distance et du temps. La focntion "update" va permettre à l'utilisateur de mieux visualiser la vitesse utilisées pendant les phases, car il pourra observer 2 avions parcourir ces différents graphes.
 
 
@@ -68,47 +68,47 @@ Elle va ainsi calculer la pente de la courbe en fonction de ces différentes pha
 
 Nous allons maintenant réaliser un exemple d'utilisation. Il faut commencer par lancer la fichier "main.py" qui se trouve sur la github. Ce programme va vous demander d'entrer l'avion que vous souhaitez. Vous pouvez aller observer la base de données proposées ou entrer un de ces avions ci-dessous :
 
-A321
+>>A321
 
-B737
+>>B737
 
-A320neo
+>>A320neo
 
-A321neoXLR
+>>A321neoXLR
 
-A320
+>>A320
 
-A220
+>>A220
 
-A330
+>>A330
 
-A350-900
+>>A350-900
 
-A350-1000
+>>A350-1000
 
-ACJ220
+>>ACJ220
 
-B777
+>>B777
 
-ACJ319neo
+>>ACJ319neo
 
-ACJ320neo
+>>ACJ320neo
 
-ACJ330
+>>ACJ330
 
-B747
+>>B747
 
 Une fois l'avion choisi, le programme va vous demander d'entrer l'aéroport de destination voulu. Vous pouvez chosir parmis les sigles de ces aéroports: 
 
-JFK
+>>JFK
 
-YUL
+>>YUL
 
-LIS
+>>LIS
 
-CAI
+>>CAI
 
-HEL
+>>HEL
 
 Le programme va ainsi vous afficher les propositions de plan de vols en fonction de l'avion et de l'aéroport d'arrivée choisi. Il vous indiquera aussi le temps que vous allez mettre et la consommation de votre avion pendant ce vol.
  Ainsi, si vous choississez l'avion "B777" et l'aéroport d'arrivée "YUL", vous obtiendrez une trajectoire de vol pour un temps minimal de 6 h 6 min à une altitude de 5.04 km ainsi qu'une trajectoire de vol pour une consommation minimale de 7 h 49 min , à une altitude de 12.94 km pour une consommation de 85375 lbs.
