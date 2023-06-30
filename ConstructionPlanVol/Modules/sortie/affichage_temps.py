@@ -4,7 +4,27 @@ from matplotlib.animation import FuncAnimation
 #Cette classe permet d'afficher l'altitude de l'avion en fonction du temps
 
 class Affichage:
+    """
+        Classe qui va permettre d'afficher les courbes correspondant aux plans de vol en fonction du temps
+
+        Attributs:
+            - conso (classe) : la classe conso correspondant à la consommation de l'avion choisi par l'utilisateur
+            - vitesse (classe) : la classe vitesse relative au trajet et à l'avion crée dans le fichier vitesses.py
+            - temps (classe) : la classe temps créee dans le fichier temps.py
+            - aeroport (classe) : La classe aeroport créee dans le fichier aeroports.py*
+
+        """
     def __init__(self, conso, vitesse, temps, aeroport):
+        """
+            Initialise la classe Affichage
+
+            Arguments:
+                - conso (classe) : la classe conso correspondant à la consommation de l'avion choisi par l'utilisateur
+                - vitesse (classe) : la classe vitesse relative au trajet et à l'avion crée dans le fichier vitesses.py
+                - temps (classe) : la classe temps créee dans le fichier temps.py
+                - aeroport (classe) : La classe aeroport créee dans le fichier aeroports.py
+
+        """
         self.c=conso
         self.v=vitesse
         self.t=temps
@@ -12,6 +32,14 @@ class Affichage:
 
     #Cette fonction ressort les valeurs de x et y pour un plan de vol avec un temps minimum
     def graphique_altitude_t_min(self):
+        """
+            Fonction qui va calculer le plan de vol pour un vol à vitesse maximale
+
+            :return:
+                -list : Liste des temps pour l'ordonnée (qui va correspondre au temps de vol)
+                -list des altitudes de notre avion pour un temps de vol minimal
+
+        """
         i_max, self.H_max = self.v.valeur_vitesse_max()
         i=1
         y_t_min=[392/3281] #On part de l'altiude de notre aeroport de départ qui est CDG. Mais c'est en ft donc on le mets en km.
@@ -39,6 +67,14 @@ class Affichage:
 
     #Cette fonction ressort les valeurs de x et y pour un plan de vol avec une consommation minimum
     def graphique_altitude_C_min(self):
+        """
+            Fonction qui va calculer le plan de vol pour un vol à consommation minimale
+
+            :return:
+                -list : Liste des temps pour l'ordonnée (qui va correspondre au temps de vol)
+                -list des altitudes de notre avion pour une consommation minimale*
+
+        """
         H_conso=self.v.hcruise
         i=1
         y_conso_min=[392/3281] #On part de l'altiude de notre aeroport de départ qui est CDG. Mais c'est en ft donc on le mets en km.
@@ -64,7 +100,11 @@ class Affichage:
         return x_c_min, y_conso_min
 
     def plan_de_vol(self):
+        """
+        Fonction qui va tracer le plan de vol pour un vol à consommation minimale et pour un temps minimal en fonction du temps
 
+        :return: Le tracé réalisé
+        """
     # Cette fonction affiche un graphique avec deux courbes, une pour le temps minimum et une pour la consommation minimum, le tout en fonction du temps
         x_t_min, y_t_min,H_max = self.graphique_altitude_t_min()
 
@@ -82,6 +122,13 @@ class Affichage:
         last_frame = len(x_t_min) - 2  # Indice de l'avant-dernière position
 
         def update(frame):
+            """
+            Fonction qui réalise l'animation des avions sur le plan de vol
+
+            :param frame: Paramètre pour mettre à jour la figure à chaque itération
+
+            :return: La figure et l'animation
+            """
             nonlocal position_avion1, position_avion2
 
             position_avion1 += self.c.v_conso / 2

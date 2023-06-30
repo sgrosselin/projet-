@@ -5,11 +5,7 @@ Created on Tue Jun 13 16:57:05 2023
 
 @author: salome
 """
-
-
-
-from Modules import Aircraft, Utilisateur, Distance, Aeroports, Temps, Vitesse, Conso, Affichage, Affichage_dist, Carburant
-
+from Modules import *
 
 
 avion = Aircraft()
@@ -21,7 +17,7 @@ vit=Vitesse(avion)
 conso=Conso(avion,vit)
 # Création de la classe conso pour l'avion et la vitesse calculée
 
-#Vmax,V_cruise, T=vit.calcul_vitesse()
+
 s=aeroport.distance_aeroports()
 Dist = Distance(vit, s)
 

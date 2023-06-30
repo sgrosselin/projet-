@@ -13,10 +13,28 @@ e=0.8
 
 #♣Cette classe calcule les vitesses en fonctions des différentes phases. On commence par calculer la "vitesse", la "vitesse max" et la "vitesse de descente", puis on calcule la "vitesse de décrochage" et la "vitesse de decollage" qui vont dépendre de la classe consommation
 class Vitesse :
+    """
+        Classe Vitesse qui permet de calculer la vitesse de l'avion sur différentes phases de vol
+
+        Attributs :
+            - avion (Classe) : La classe avion relative à l'avion choisi par l'utilisateur
+
+        """
     def __init__(self,avion):
+        """
+        Initialise la classe Vitesse
+        :param - avion (Classe) : La classe avion relative à l'avion choisi par l'utilisateur
+        """
         self.Avion= avion
 
     def calcul_vitesse(self):
+        """
+        Fonction qui calcule la vitesse maximale de l'avion
+        :return:
+            - list : Liste des vitesses maximales de l'avion
+            - list : Liste des vitesses de croisière de l'avion
+            - list : Liste des températures
+        """
     #Cette fonction va nous ressortir une liste de vitesse max et une liste de vitesse de croisière ainsi que la liste de température
         self.vitesse_max=[]
         vitesse_cruise = []
@@ -39,6 +57,12 @@ class Vitesse :
         return self.vitesse_max, vitesse_cruise, self.Tliste
 
     def valeur_vitesse_max(self):
+        """
+        Permet de calculer la vitesse maximale
+        :return:
+            - int : Position de la vitesse maximale dans la liste des vitesses
+            - float : Altitude pour laquelle on a une vitesse maximale
+        """
     #Cette fonction nous permet de ressortir la vitesse maximale de la liste de vitesse maximale. Suite à cela nous ressortirons la position dans la liste et l'altitude correspondante
         i_max=0
         self.vmax=max(self.vitesse_max)
@@ -51,6 +75,13 @@ class Vitesse :
 
 
     def vitesse_decrochage(self,consommation):
+        """
+        Calcule la vitesse de décrochage de l'avion
+
+        :param consommation: (Classe): Classe consommation
+        :return:
+            - float : Vitesse de décrochage de l'avion
+        """
         self.conso=consommation
         Cltomax=1.8 #Valeur de Cltomax prise pour une moyenne d'avion
         c,v,i_min=self.conso.consommation()
@@ -67,10 +98,23 @@ class Vitesse :
 
 
     def vitesse_decollage(self,conso):
+        """
+        Calcule la vitesse de décollage en utilisant la vitesse de décrochage
+        :param conso: (Classe) : Classe conso de l'avion
+
+        :return:
+            - float : Vitesse de décrochage de l'avion
+        """
     #La vitesse de décollage dépend de la vitesse de décrochage
         return 1.1*self.vitesse_decrochage(conso)
 
     def vitesse_descente(self):
+        """
+        Calcume la vitesse pour la phase de descente de l'avion
+
+        :return:
+            float : Vitesse de descente de l'avion
+        """
         k=1/(m.pi*self.Avion.allongement*e) #Calcul du coefficient d'Oswald
         Cl = m.sqrt(Cd0/k) #Calcul du coefficient de trainée
         V_desc = m.sqrt((2*m.cos(m.degrees(gamma_desc))*self.Avion.Wla*0.4535)/(rhoSL*Cl*self.Avion.s_alaire*0.0929)) #Calcul de la vitesse de descente

@@ -2,14 +2,23 @@
 
 import pandas as pd
 
-data = pd.read_csv('Base_donnee_avions.csv',index_col=0,delimiter=';',decimal='.',thousands=' ')
-data.columns = ['Modele','Constructeur','Type','Conso','s_alaire','envergure','allongement','range','Mach_cruise','Mach_max','WTO','WLA','Wf','We','Poussee']
+#data = pd.read_csv('Base_donnee_avions.csv',index_col=0,delimiter=';',decimal='.',thousands=' ')
+#data.columns = ['Modele','Constructeur','Type','Conso','s_alaire','envergure','allongement','range','Mach_cruise','Mach_max','WTO','WLA','Wf','We','Poussee']
 
 
 #Cette classe permet de récupérer les informations de différents avions et de pouvoir les réutiliser par la suite
 
 class Aircraft:
+    """
+    Classe Aircraft : Permet d'obtenir toutes les caractéristiques techniques de l'avion que l'utilisateur a choisi
+    """
+
+
     def __init__(self):
+        data = pd.read_csv('Base_donnee_avions.csv', index_col=0, delimiter=';', decimal='.', thousands=' ')
+
+        data.columns = ['Modele', 'Constructeur', 'Type', 'Conso', 's_alaire', 'envergure', 'allongement', 'range',
+                    'Mach_cruise', 'Mach_max', 'WTO', 'WLA', 'Wf', 'We', 'Poussee']
     #Dans cette fonction, on appelle toutes les colonnes de notre fichier, et donc ainsi toutes les valeurs afin de pouvoir les réutiliser
         print("\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
         print("\nLe but de ce programme est de vous permettre de choisir l'avion que vous souhaitez, puis un aéroport d'arrivée. ")

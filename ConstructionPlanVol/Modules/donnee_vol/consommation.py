@@ -5,7 +5,22 @@ import math as m
 
 #Cette classe nous permet de calculer la consommation spécifique de notre vol
 class Conso:
+    """
+    Représente la classe Conso
+
+    Attributs :
+        - avion (classe) : la classe avion correspondant à l'avion choisit par l'utilisateur
+        - V (classe) : la classe vitesse relative au trajet et à l'avion crée dans le fichier vitesses.py
+    """
     def __init__(self, avion,V):
+        """
+           Initialise la consommation
+
+           Arguments :
+               - avion (classe) : la classe avion correspondant à l'avion choisit par l'utilisateur
+               - V (classe) : la classe vitesse relative au trajet et à l'avion crée dans le fichier vitesses.py
+
+           """
     #On a besoin pour cela des informations sur l'avion et sur les différentes vitesses calculées
 
         self.Avion=avion
@@ -13,6 +28,14 @@ class Conso:
         v_max,self.v_cruise,temp=self.v.calcul_vitesse() #m/s
 
     def consommation(self):
+        """
+        Calcul la consommation en carburant de l'avion choisit par l'utilisateur en fonction du trajet
+
+        :return:
+            - float : C, la consommation optimale en lb/lb/h
+            - float : V, La vitesse de croisière pour la valeur de la consommation optimale calculée
+            - int : i, La position de la consommation minimale dans la liste des consommations
+        """
     # Nous allons calculer la consommation spécifique à l'aide de la formule de Breguet
         Rapport_poids_cruise= 0.975*0.975*0.995*self.Avion.Wto/self.Avion.Wla # On calcule d'abord de poids nécéssaire
         k=1/m.pi*0.8*self.Avion.allongement #Calcul du coefficient d'Oswald

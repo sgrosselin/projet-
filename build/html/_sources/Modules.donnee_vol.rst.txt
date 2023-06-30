@@ -1,0 +1,53 @@
+Modules.donnee\_vol package
+===========================
+
+Submodules
+----------
+
+Modules.donnee\_vol.carburant module
+------------------------------------
+
+.. automodule:: Modules.donnee_vol.carburant
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Modules.donnee\_vol.consommation module
+---------------------------------------
+
+.. automodule:: Modules.donnee_vol.consommation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Modules.donnee\_vol.distance module
+-----------------------------------
+
+.. automodule:: Modules.donnee_vol.distance
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Modules.donnee\_vol.temps module
+--------------------------------
+
+.. automodule:: Modules.donnee_vol.temps
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Modules.donnee\_vol.vitesses module
+-----------------------------------
+
+.. automodule:: Modules.donnee_vol.vitesses
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: Modules.donnee_vol
+   :members:
+   :undoc-members:
+   :show-inheritance:

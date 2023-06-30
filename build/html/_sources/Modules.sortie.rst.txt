@@ -1,0 +1,37 @@
+Modules.sortie package
+======================
+
+Submodules
+----------
+
+Modules.sortie.affichage\_distance module
+-----------------------------------------
+
+.. automodule:: Modules.sortie.affichage_distance
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Modules.sortie.affichage\_temps module
+--------------------------------------
+
+.. automodule:: Modules.sortie.affichage_temps
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Modules.sortie.interface\_utilisateur module
+--------------------------------------------
+
+.. automodule:: Modules.sortie.interface_utilisateur
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: Modules.sortie
+   :members:
+   :undoc-members:
+   :show-inheritance:

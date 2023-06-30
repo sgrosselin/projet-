@@ -1,16 +1,30 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Jun 19 11:19:25 2023
 
-@author: salome
-"""
 import matplotlib.pyplot as plt
 
 #Cette classe permet d'afficher l'altitude de l'avion en fonction de la distance
 
 class Affichage_dist:
+    """
+    Classe qui va permettre d'afficher les courbes correspondant aux plans de vol
+
+    Attributs:
+        - conso (classe) : la classe conso correspondant à la consommation de l'avion choisi par l'utilisateur
+        - vitesse (classe) : la classe vitesse relative au trajet et à l'avion crée dans le fichier vitesses.py
+        - distance (classe) : la classe distance créee dans le fichier distance.py
+        - aeroport (classe) : La classe aeroport créee dans le fichier aeroports.py
+
+    """
     def __init__(self,conso,vitesse,distance, aeroport):
+        """
+            Initialise la classe Affichage_dist
+            Arguments:
+                - conso (classe) : la classe conso correspondant à la consommation de l'avion choisi par l'utilisateur
+                - vitesse (classe) : la classe vitesse relative au trajet et à l'avion crée dans le fichier vitesses.py
+                - distance (classe) : la classe distance créee dans le fichier distance.py
+                - aeroport (classe) : La classe aeroport créee dans le fichier aeroports.py
+        """
         self.c = conso
         self.v = vitesse
         self.d = distance
@@ -18,6 +32,13 @@ class Affichage_dist:
         
     #Cette fonction ressort les valeurs de x et y pour un plan de vol avec un temps minimum
     def graphique_t_min(self):
+        """
+        Fonction qui va calculer le plan de vol pour un vol à vitesse maximale
+
+        :return:
+            -list : Liste des distances pour l'ordonnée (qui va correspondre à la distance entre les aéroports)
+            -list des altitudes de notre avion
+        """
         i_max,self.H_max = self.v.valeur_vitesse_max()
         dist_mont_max, dist_mont_sol_max = self.d.distance_montee(self.H_max)
         dist_desc_max, dist_desc_sol_max = self.d.distance_descente(self.H_max)
@@ -47,6 +68,14 @@ class Affichage_dist:
     
     #Cette fonction ressort les valeurs de x et y pour un plan de vol avec une consommation minimum
     def graphique_c_min(self):
+        """
+            Fonction qui va calculer le plan de vol pour un vol à consommation minimale
+
+            :return:
+                -list : Liste de la distance pour l'ordonnée (qui va correspondre à la distance entre les aéroports)
+                -list des altitudes de notre avion
+
+        """
         self.H_conso = self.v.hcruise
         dist_mont_conso, dist_mont_sol_conso = self.d.distance_montee(self.H_conso)
         dist_desc_conso, dist_desc_sol_conso = self.d.distance_descente(self.H_conso)
@@ -75,6 +104,12 @@ class Affichage_dist:
 
 
     def plan_de_vol_dist(self):
+        """
+        Fonction qui va tracer le plan de vol pour un vol à consommation minimale et pour un temps minimal en fonction de la distance
+
+        :return: Le tracé réalisé
+
+        """
     # Cette fonction affiche un graphique avec deux courbes, une pour le temps minimum et une pour la consommation minimum, le tout en fonction de la distance
         x_t_min, y_t_min = self.graphique_t_min()
         x_c_min, y_conso_min = self.graphique_c_min()

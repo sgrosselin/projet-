@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Exemple d’utilisation &#8212; Projet_Final  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Module sortie" href="sortie.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="exemple-d-utilisation">
+<h1>Exemple d’utilisation<a class="headerlink" href="#exemple-d-utilisation" title="Permalink to this heading">¶</a></h1>
+<p>Nous allons vous présenter ici un exemple d’utilisation.</p>
+<p>Tout d’abord, l’utilisateur est invité à choisir un avion parmi la base de données suivantes</p>
+<section id="choix-avion">
+<h2><em>Choix avion</em><a class="headerlink" href="#choix-avion" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Modele</p></td>
+<td><p>Constructeur</p></td>
+<td><p>Type</p></td>
+<td><p>Conso</p></td>
+<td><p>Surface Alaire</p></td>
+<td><p>Envergure</p></td>
+<td><p>Allongement</p></td>
+<td><p>Range</p></td>
+<td><p>Mach cruise</p></td>
+<td><p>Mach max</p></td>
+<td><p>WTO max</p></td>
+<td><p>WLA max</p></td>
+<td><p>Wfuel max</p></td>
+<td><p>Wempty</p></td>
+<td><p>Poussee</p></td>
+</tr>
+<tr class="row-even"><td><p>_</p></td>
+<td><p>A321</p></td>
+<td><p>Airbus</p></td>
+<td><p>Long courrier</p></td>
+<td><p>0.51</p></td>
+<td><p>1315.5</p></td>
+<td><p>114.83</p></td>
+<td><p>10.02</p></td>
+<td><p>7400</p></td>
+<td><p>0.78</p></td>
+<td><p>0.82</p></td>
+<td><p>213848</p></td>
+<td><p>174165.2</p></td>
+<td><p>32940</p></td>
+<td><p>16670</p></td>
+<td><p>66219.7</p></td>
+</tr>
+<tr class="row-odd"><td><p>_</p></td>
+<td><p>B737</p></td>
+<td><p>Boeing</p></td>
+<td><p>Long courrier</p></td>
+<td><p>0.55</p></td>
+<td><p>1341.2</p></td>
+<td><p>110</p></td>
+<td><p>9.02</p></td>
+<td><p>3000</p></td>
+<td><p>0.79</p></td>
+<td><p>0.85</p></td>
+<td><p>174198</p></td>
+<td><p>154323</p></td>
+<td><p>6875</p></td>
+<td><p>83000</p></td>
+<td><p>40465.6</p></td>
+</tr>
+<tr class="row-even"><td><p>_</p></td>
+<td><p>A320neo</p></td>
+<td><p>Airbus</p></td>
+<td><p>Long courrier</p></td>
+<td><p>0.51</p></td>
+<td><p>1313</p></td>
+<td><p>117</p></td>
+<td><p>10.43</p></td>
+<td><p>3400</p></td>
+<td><p>0.78</p></td>
+<td><p>0.82</p></td>
+<td><p>174165</p></td>
+<td><p>148591</p></td>
+<td><p>7060</p></td>
+<td><p>141800</p></td>
+<td><p>54000</p></td>
+</tr>
+<tr class="row-odd"><td><p>_</p></td>
+<td><p>A321neoXLR</p></td>
+<td><p>Airbus</p></td>
+<td><p>Long courrier</p></td>
+<td><p>0.52</p></td>
+<td><p>1313</p></td>
+<td><p>115</p></td>
+<td><p>10.07</p></td>
+<td><p>4697</p></td>
+<td><p>0.78</p></td>
+<td><p>0.82</p></td>
+<td><p>213800</p></td>
+<td><p>164850</p></td>
+<td><p>9000</p></td>
+<td><p>166700</p></td>
+<td><p>64317.8</p></td>
+</tr>
+<tr class="row-even"><td><p>_</p></td>
+<td><p>A320</p></td>
+<td><p>Airbus</p></td>
+<td><p>Long courrier</p></td>
+<td><p>0.5</p></td>
+<td><p>1313</p></td>
+<td><p>117.5</p></td>
+<td><p>10.52</p></td>
+<td><p>3400</p></td>
+<td><p>0.84</p></td>
+<td><p>0.82</p></td>
+<td><p>172000</p></td>
+<td><p>145500</p></td>
+<td><p>7190</p></td>
+<td><p>137800</p></td>
+<td><p>53054.9</p></td>
+</tr>
+<tr class="row-odd"><td><p>_</p></td>
+<td><p>A220</p></td>
+<td><p>Airbus</p></td>
+<td><p>Long courrier</p></td>
+<td><p>0.42</p></td>
+<td><p>1208</p></td>
+<td><p>115</p></td>
+<td><p>10.95</p></td>
+<td><p>3400</p></td>
+<td><p>0.78</p></td>
+<td><p>0.82</p></td>
+<td><p>139000</p></td>
+<td><p>119500</p></td>
+<td><p>5760</p></td>
+<td><p>115000</p></td>
+<td><p>46580</p></td>
+</tr>
+<tr class="row-even"><td><p>_</p></td>
+<td><p>A330</p></td>
+<td><p>Airbus</p></td>
+<td><p>Long courrier</p></td>
+<td><p>0.54</p></td>
+<td><p>3892</p></td>
+<td><p>210</p></td>
+<td><p>11.33</p></td>
+<td><p>8150</p></td>
+<td><p>0.82</p></td>
+<td><p>0.86</p></td>
+<td><p>533400</p></td>
+<td><p>410050</p></td>
+<td><p>36750</p></td>
+<td><p>388000</p></td>
+<td><p>139381.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>_</p></td>
+<td><p>A350-900</p></td>
+<td><p>Airbus</p></td>
+<td><p>Long courrier</p></td>
+<td><p>0.53</p></td>
+<td><p>4768</p></td>
+<td><p>212.5</p></td>
+<td><p>9.47</p></td>
+<td><p>8300</p></td>
+<td><p>0.85</p></td>
+<td><p>0.89</p></td>
+<td><p>623900</p></td>
+<td><p>456400</p></td>
+<td><p>43981</p></td>
+<td><p>431400</p></td>
+<td><p>168157</p></td>
+</tr>
+<tr class="row-even"><td><p>_</p></td>
+<td><p>A350-1000</p></td>
+<td><p>Airbus</p></td>
+<td><p>Long courrier</p></td>
+<td><p>0.53</p></td>
+<td><p>4768</p></td>
+<td><p>212.5</p></td>
+<td><p>9.47</p></td>
+<td><p>8700</p></td>
+<td><p>0.85</p></td>
+<td><p>0.89</p></td>
+<td><p>703200</p></td>
+<td><p>520300</p></td>
+<td><p>43324</p></td>
+<td><p>491600</p></td>
+<td><p>193785.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>_</p></td>
+<td><p>ACJ220</p></td>
+<td><p>Airbus</p></td>
+<td><p>jet</p></td>
+<td><p>0.39</p></td>
+<td><p>1206</p></td>
+<td><p>115</p></td>
+<td><p>10.97</p></td>
+<td><p>5650</p></td>
+<td><p>0.78</p></td>
+<td><p>0.83</p></td>
+<td><p>139000</p></td>
+<td><p>112500</p></td>
+<td><p>7550</p></td>
+<td><p>108000</p></td>
+<td><p>48558.7</p></td>
+</tr>
+<tr class="row-even"><td><p>_</p></td>
+<td><p>B777</p></td>
+<td><p>Boeing</p></td>
+<td><p>Long courrier</p></td>
+<td><p>0.57</p></td>
+<td><p>4702</p></td>
+<td><p>212</p></td>
+<td><p>9.56</p></td>
+<td><p>7370</p></td>
+<td><p>0.83</p></td>
+<td><p>0.89</p></td>
+<td><p>775002</p></td>
+<td><p>554000</p></td>
+<td><p>47889</p></td>
+<td><p>315261</p></td>
+<td><p>230600</p></td>
+</tr>
+<tr class="row-odd"><td><p>_</p></td>
+<td><p>ACJ319neo</p></td>
+<td><p>Airbus</p></td>
+<td><p>jet</p></td>
+<td><p>0.51</p></td>
+<td><p>1189</p></td>
+<td><p>111</p></td>
+<td><p>10.36</p></td>
+<td><p>6750</p></td>
+<td><p>0.82</p></td>
+<td><p>0.87</p></td>
+<td><p>170417</p></td>
+<td><p>140875</p></td>
+<td><p>9880</p></td>
+<td><p>132939</p></td>
+<td><p>63380</p></td>
+</tr>
+<tr class="row-even"><td><p>_</p></td>
+<td><p>ACJ320neo</p></td>
+<td><p>Airbus</p></td>
+<td><p>jet</p></td>
+<td><p>0.52</p></td>
+<td><p>1223</p></td>
+<td><p>117.5</p></td>
+<td><p>11.29</p></td>
+<td><p>6000</p></td>
+<td><p>0.83</p></td>
+<td><p>0.87</p></td>
+<td><p>174165</p></td>
+<td><p>148592</p></td>
+<td><p>9880</p></td>
+<td><p>141757</p></td>
+<td><p>63380</p></td>
+</tr>
+<tr class="row-odd"><td><p>_</p></td>
+<td><p>ACJ330</p></td>
+<td><p>Airbus</p></td>
+<td><p>jet</p></td>
+<td><p>0.53</p></td>
+<td><p>3875</p></td>
+<td><p>210</p></td>
+<td><p>11.38</p></td>
+<td><p>10400</p></td>
+<td><p>0.82</p></td>
+<td><p>0.86</p></td>
+<td><p>553400</p></td>
+<td><p>410060</p></td>
+<td><p>36750</p></td>
+<td><p>388000</p></td>
+<td><p>65000</p></td>
+</tr>
+<tr class="row-even"><td><p>_</p></td>
+<td><p>B747</p></td>
+<td><p>Boeing</p></td>
+<td><p>Long courrier</p></td>
+<td><p>0.57</p></td>
+<td><p>5650</p></td>
+<td><p>211</p></td>
+<td><p>7.88</p></td>
+<td><p>7585</p></td>
+<td><p>0.855</p></td>
+<td><p>0.92</p></td>
+<td><p>910000</p></td>
+<td><p>652000</p></td>
+<td><p>63702</p></td>
+<td><p>412300</p></td>
+<td><p>253200</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>ft^2</p></td>
+<td><p>ft</p></td>
+<td></td>
+<td><p>mn</p></td>
+<td></td>
+<td></td>
+<td><p>lb</p></td>
+<td><p>lb</p></td>
+<td><p>USG</p></td>
+<td><p>lb</p></td>
+<td><p>lb</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="choix-aeroport-de-destination">
+<h2><em>Choix aéroport de destination</em><a class="headerlink" href="#choix-aeroport-de-destination" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Aeroport arrivee</p></td>
+<td><p>Destination</p></td>
+<td><p>Latitude (Nord)</p></td>
+<td><p>Longitude (Est)</p></td>
+<td><p>Altitude</p></td>
+</tr>
+<tr class="row-even"><td><p>JFK</p></td>
+<td><p>New York ,USA</p></td>
+<td><p>40.643537909821795</p></td>
+<td><p>-73.78892598816799</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-odd"><td><p>YUL</p></td>
+<td><p>Montreal, Canada</p></td>
+<td><p>45.46582803681348</p></td>
+<td><p>-73.74542775907268</p></td>
+<td><p>118</p></td>
+</tr>
+<tr class="row-even"><td><p>LIS</p></td>
+<td><p>Lisbonne,Portugual</p></td>
+<td><p>38.771697613459686</p></td>
+<td><p>-9.128935247783787</p></td>
+<td><p>354</p></td>
+</tr>
+<tr class="row-odd"><td><p>CAI</p></td>
+<td><p>Caire, Egypte</p></td>
+<td><p>30.112096612743304</p></td>
+<td><p>31.400684582433236</p></td>
+<td><p>382</p></td>
+</tr>
+<tr class="row-even"><td><p>HEL</p></td>
+<td><p>Helsinki, Finlande</p></td>
+<td><p>60.318040204930725</p></td>
+<td><p>24.949570353495332</p></td>
+<td><p>180</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="resultats-du-programme">
+<h2><em>Résultats du programme</em><a class="headerlink" href="#resultats-du-programme" title="Permalink to this heading">¶</a></h2>
+<p>Considérons un vol sur Boeing 777 pour un vol CDG-YUL,
+Nous obtenons dès lors :</p>
+<ul class="simple">
+<li><p>Distance aéroports : 5541,12 Km</p></li>
+<li><p>H_t_min :  5,04 Km (Altitude pour un temps de vol minimal)</p></li>
+<li><p>H_c_min : 12,94 km (Altitude pour une consommation minimale)</p></li>
+<li><p>Temps de trajet minimal : 6h 6 min</p></li>
+<li><p>Temps de trajet pour une consommation minimale : 7 h 49 min</p></li>
+<li><p>Consommation minimale de carburant : 85375 lbs</p></li>
+</ul>
+<p>Nous obtenons aussi les courbes suivantes:</p>
+<img alt="_images/Affichage_1.png" src="_images/Affichage_1.png" />
+<img alt="_images/Affichage_2.png" src="_images/Affichage_2.png" />
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Projet_Final</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Exemple d’utilisation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#choix-avion"><em>Choix avion</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#choix-aeroport-de-destination"><em>Choix aéroport de destination</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resultats-du-programme"><em>Résultats du programme</em></a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="sortie.html" title="previous chapter">Module sortie</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Emilien Morlet / Salomé Grosselin / Slimane Iskounene / Cassiopée Dujardin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/Exemple_utilisation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
