@@ -30,9 +30,9 @@ Ci-dessous, nous allons vous expliquer comment bien utiliser ntore code pour ré
 
 Notre code est composé de 3 modules ainsi que d'un fichier "main.py" qui permet de lancer le programme et d'appeler toutes les classes nécéssaires. Les 3 modules sont les suivants: 
 
-> Donnée de vol 
-> Entrée 
-> Sortie
+> -Donnée de vol 
+> -Entrée 
+> -Sortie
 
 Chacun de ses modules contient un fichier "__init__".
 Nous allons maintenant vous expliquer ce que chacun de ces modules contient. Tout d'abord, comme son nom l'indique, le module "Entrée" va contenir les différentes classes qui vont permettre à l'utilisateur d'aller récupérer les bases de données.
