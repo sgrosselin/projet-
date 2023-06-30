@@ -1,5 +1,4 @@
-# projet_final_MGA802
-
+# Projet Final MGA802
 **TITRE : SIMULATION ET OPTIMISATION DE TRAJECTOIRES DE VOL**
 
 **Plan du README :**
@@ -30,6 +29,7 @@ Ci-dessous, nous allons vous expliquer comment bien utiliser ntore code pour ré
 **II - EXPLICATION DU CODE**
 
 Notre code est composé de 3 modules ainsi que d'un fichier "main.py" qui permet de lancer le programme et d'appeler toutes les classes nécéssaires. Les 3 modules sont les suivants: 
+
 > Donnée de vol 
 > Entrée 
 > Sortie
