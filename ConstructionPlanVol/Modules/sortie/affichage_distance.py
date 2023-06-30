@@ -105,10 +105,13 @@ class Affichage_dist:
 
     def plan_de_vol_dist(self, lat, long):
         """
-        Fonction qui va tracer le plan de vol pour un vol à consommation minimale et pour un temps minimal en fonction de la distance
+        Cette fonction trace le plan de vol en 3D avec le trajet à consommation minimale et à temps minimal
 
-         :return: Le tracé réalisé
+        :param lat: (float) : Latitude de l'aéroport d'arrivée
+        :param long: (float) : Longitude de l'aéroport d'arrivée
 
+        :return:
+            Le tracé en 3D sur la terre
         """
         x_t_min, y_t_min = self.graphique_t_min()
         x_c_min, y_conso_min = self.graphique_c_min()

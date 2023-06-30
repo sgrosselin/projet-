@@ -75,11 +75,17 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sortie.affichage_distance.Affichage_dist.plan_de_vol_dist">
-<span class="sig-name descname"><span class="pre">plan_de_vol_dist</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sortie.affichage_distance.Affichage_dist.plan_de_vol_dist" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fonction qui va tracer le plan de vol pour un vol à consommation minimale et pour un temps minimal en fonction de la distance</p>
+<span class="sig-name descname"><span class="pre">plan_de_vol_dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sortie.affichage_distance.Affichage_dist.plan_de_vol_dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cette fonction trace le plan de vol en 3D avec le trajet à consommation minimale et à temps minimal</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le tracé réalisé</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lat</strong> – (float) : Latitude de l’aéroport d’arrivée</p></li>
+<li><p><strong>long</strong> – (float) : Longitude de l’aéroport d’arrivée</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le tracé en 3D sur la terre</p>
 </dd>
 </dl>
 </dd></dl>
@@ -145,7 +151,7 @@
 <span id="fichier-interface-utilisateur-py"></span><h2>Fichier interface_utilisateur.py<a class="headerlink" href="#module-sortie.interface_utilisateur" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="sortie.interface_utilisateur.Utilisateur">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sortie.interface_utilisateur.</span></span><span class="sig-name descname"><span class="pre">Utilisateur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aff_dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aff_tps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conso</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sortie.interface_utilisateur.Utilisateur" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sortie.interface_utilisateur.</span></span><span class="sig-name descname"><span class="pre">Utilisateur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aff_dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aff_tps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conso</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sortie.interface_utilisateur.Utilisateur" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Classe Utilisateur qui va permettre de faire l’interface utilisateur et d’afficher les plans de vol</p>
 <dl class="simple">
