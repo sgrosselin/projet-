@@ -33,6 +33,7 @@ Notre code est composé de 3 modules ainsi que d'un fichier "main.py" qui permet
 >- Donnée de vol 
 >- Entrée 
 >- Sortie
+
 Chacun de ses modules contient un fichier "__init__".
 Nous allons maintenant vous expliquer ce que chacun de ces modules contient. Tout d'abord, comme son nom l'indique, le module "Entrée" va contenir les différentes classes qui vont permettre à l'utilisateur d'aller récupérer les bases de données.
 C'est à dire que nous avons les classes "Aéroport" et "Aircraft" qui appellent chacunes leur base de donnée qui leur est propre. La base de données Aéroport contient 5 choix d'aéroports avec la position de ceux-ci, tandis que la classe Aircraft contient 15 choix d'avions, ainsi que leurs différentes caractéristiques.
