@@ -69,7 +69,7 @@ La seule différence entre ces deux classes est que, dans la classe affichage_te
 
 **III - EXEMPLE D'UTILISATION**
 
-Nous allons maintenant réaliser un exemple d'utilisation. Il faut commencer par lancer la fichier "main.py" qui se trouve sur le github. Ce programme va vous demander d'entrer l'avion que vous souhaitez. Vous pouvez aller observer la base de données proposées ou entrer un de ces avions ci-dessous :
+Nous allons maintenant réaliser un exemple d'utilisation. Il faut commencer par lancer la fichier "main.py" qui se trouve sur le github dans le dossier "Construction plan de vol". Ce programme va vous demander d'entrer l'avion que vous souhaitez. Vous pouvez aller observer la base de données proposées ou entrer un de ces avions ci-dessous :
 
 >>A321
 
