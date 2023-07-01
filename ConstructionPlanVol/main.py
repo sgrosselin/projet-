@@ -18,10 +18,8 @@ conso=Conso(avion,vit)
 # Création de la classe conso pour l'avion et la vitesse calculée
 
 
-s=aeroport.distance_aeroports()
-lat_arrive,long_arrive=aeroport.coordonnees_arrive()
 
-Dist = Distance(vit, s)
+Dist = Distance(vit, aeroport)
 
 
 tps = Temps(Dist,vit, aeroport, avion)
@@ -29,7 +27,7 @@ c=Carburant(avion, tps, vit, conso)
 b=Affichage(c, vit, tps, aeroport)
 a=Affichage_dist(c, vit, Dist, aeroport)
 
-utilisateur = Utilisateur (a,b, c, lat_arrive, long_arrive)
+utilisateur = Utilisateur (a,b, c, aeroport)
 
 
 
