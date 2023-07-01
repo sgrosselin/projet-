@@ -9,6 +9,8 @@ II - EXPLICATION DU CODE
 
 III - EXEMPLE D'UTILISATION
 
+IV - UTILISATION DE LA DOCUMENTATION SPHINX
+
 
 
 
@@ -131,6 +133,9 @@ Nous obtenons donc les résultats suivants :
 ***Graphique des deux propositions de plans de vol en fonction de la distance***
 
 
+**IV - UTILISATION DE LA DOCUMENTATION SPHINX**
+
+Dans le but de faciliter la compréhension de nos programmes pythons et afin de permettre une meilleure compréhension des outils utilisés, nous avons crées une documentation .html à l'aide de l'outil #Sphinx
 
 
 
