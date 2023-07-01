@@ -135,7 +135,19 @@ Nous obtenons donc les résultats suivants :
 
 **IV - UTILISATION DE LA DOCUMENTATION SPHINX**
 
-Dans le but de faciliter la compréhension de nos programmes pythons et afin de permettre une meilleure compréhension des outils utilisés, nous avons crées une documentation .html à l'aide de l'outil #Sphinx
+Dans le but de faciliter la compréhension de nos programmes pythons et afin de permettre une meilleure compréhension des outils utilisés, nous avons crées une documentation .html à l'aide de l'outil Sphinx.
+
+Pour la visionner, veuillez accéder au fichier html suivant : index.html
+Voici le chemin afin de retrouver ce dernier : projet_final_MGA802\build\html\index.html.
+
+Ce fichier html est composé de deux grandes parties 
+
+>- Modules
+>- Exemple d'utilisation
+
+La partie Modules permet de détailler tous les outils (Classes, fonctions, ...) utilisées dans le package "Modules"
+
+La partie Exemple d'utilisation permet de détailler un exemple détaillé, pour un vol CDG-YUL réalisé avec un B777, afin de montrer les résultats obtenus par l'utilisateur
 
 
 
