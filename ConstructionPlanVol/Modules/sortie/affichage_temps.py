@@ -14,7 +14,7 @@ class Affichage:
             - aeroport (classe) : La classe aeroport créee dans le fichier aeroports.py*
 
         """
-    def __init__(self, conso, vitesse, temps, aeroport):
+    def __init__(self, carb, vitesse, temps, aeroport):
         """
             Initialise la classe Affichage
 
@@ -25,7 +25,7 @@ class Affichage:
                 - aeroport (classe) : La classe aeroport créee dans le fichier aeroports.py
 
         """
-        self.c=conso
+        self.c=carb
         self.v=vitesse
         self.t=temps
         self.a=aeroport
@@ -40,18 +40,20 @@ class Affichage:
                 -list des altitudes de notre avion pour un temps de vol minimal
 
         """
-        i_max, self.H_max = self.v.valeur_vitesse_max()
+        self.i_max, self.H_max, self.v_max = self.v.valeur_vitesse_max()
+        self.liste_v_max, self.liste_v_conso , T= self.v.calcul_vitesse()
+        self.tps_mont_max = self.t.temps_mont(self.liste_v_max)
         i=1
         y_t_min=[392/3281] #On part de l'altiude de notre aeroport de départ qui est CDG. Mais c'est en ft donc on le mets en km.
         x_t_min=[0]
         i_cruise=0
         while  y_t_min[-1]>= self.a.altitude/3281:
         #Tant que notre avion n'a pas atteint l'altitude de notre aeroport d'arrivée, on continue d'implémenter
-            if i < self.t.temps_mont(self.H_max):
+            if i < self.tps_mont_max[self.i_max]:
             #Si i est plus petit que le temps de montée que l'on a calculé, alors on ajoute à y la valeur de la fonction affine qui dépend du coefficient directeur pour la montée
-                y_t_min.append((((self.H_max-y_t_min[0])/self.t.temps_mont(self.H_max)) * i) + y_t_min[0])
+                y_t_min.append((((self.H_max-y_t_min[0])/self.tps_mont_max[self.i_max]) * i) + y_t_min[0])
 
-            elif self.t.temps_mont(self.H_max)<i<self.t.temps_mont(self.H_max)+self.t.temps_cruise(self.v.vmax,self.H_max):
+            elif self.tps_mont_max[self.i_max] < i < self.tps_mont_max[self.i_max]+self.t.temps_cruise(self.v.v_max,self.H_max):
             #si i est dans le temps de la croisière, alors on ajoute à y l'altitude de notre croisière
                 y_t_min.append(self.H_max+ y_t_min[0])
                 i_cruise = i+1
@@ -75,24 +77,25 @@ class Affichage:
                 -list des altitudes de notre avion pour une consommation minimale*
 
         """
-        H_conso=self.v.hcruise
+        self.Q_min, self.i_min, self.H_conso, self.v_conso= self.c.carburant_conso_min(self.liste_v_conso)
+        self.tps_mont_min = self.t.temps_mont(self.liste_v_conso)
         i=1
         y_conso_min=[392/3281] #On part de l'altiude de notre aeroport de départ qui est CDG. Mais c'est en ft donc on le mets en km.
         x_c_min=[0]
         i_cruise=0
         while y_conso_min[-1]>= self.a.altitude/3281:
         #Tant que notre avion n'a pas atteint l'altitude de notre aeroport d'arrivée, on continue d'implémenter
-            if i < self.t.temps_mont(H_conso):
+            if i < self.tps_mont_min[self.i_min]:
             #Si i est plus petit que le temps de montée que l'on a calculé, alors on ajoute à y la valeur de la fonction affine qui dépend du coefficient directeur pour la montée
-                y_conso_min.append(((H_conso-y_conso_min[0])/self.t.temps_mont(H_conso)) * i + y_conso_min[0])
+                y_conso_min.append(((self.H_conso-y_conso_min[0])/self.tps_mont_min[self.i_min]) * i + y_conso_min[0])
 
-            elif self.t.temps_mont(H_conso)<i<self.t.temps_mont(H_conso)+self.t.temps_cruise(self.c.v_conso,H_conso):
+            elif self.tps_mont_min[self.i_min]<i<self.tps_mont_min[self.i_min]+self.t.temps_cruise(self.v_conso,self.H_conso):
             #si i est dans le temps de la croisière, alors on ajoute à y l'altitude de notre croisière
-                y_conso_min.append(H_conso+ y_conso_min[0])
+                y_conso_min.append(self.H_conso+ y_conso_min[0])
                 i_cruise = i+1
             else :
             # si i est dans le temps de descente, on ajoute à y la valeur de la fonction affine qui dépaend du coefficient directeur pour la descente
-                y_conso_min.append((H_conso+ y_conso_min[0])-((i-i_cruise)*((H_conso-(self.a.altitude/3281))/self.t.temps_desc())))
+                y_conso_min.append((self.H_conso+ y_conso_min[0])-((i-i_cruise)*((self.H_conso-(self.a.altitude/3281))/self.t.temps_desc())))
             x_c_min.append(i)
             i+=1  #On incrémente i afin de continuer la boucle while
         x_c_min.pop(-1)
@@ -131,10 +134,10 @@ class Affichage:
             """
             nonlocal position_avion1, position_avion2
 
-            position_avion1 += self.c.v_conso / 2
+            position_avion1 += self.v_conso / 2
             position_avion2 += max(self.v.vitesse_max) / 2.5
 
-            if frame > self.t.temps_mont(H_max):
+            if frame > self.tps_mont_max[self.i_max]:
                 position_avion1 += self.v.vitesse_descente() / 5
                 position_avion2 += self.v.vitesse_descente() / 5
 
@@ -170,7 +173,11 @@ class Affichage:
                 anim.event_source.stop()
 
         anim = FuncAnimation(fig, update, frames=len(x_t_min), interval=1, repeat=False)
-        print(f"Le temps de trajet minimum est de", round(self.t.temps_total(self.v.vmax,self.H_max)/3600,2),'heures')
-        print(f"Le temps de trajet pour une consommation minimum est de", round(self.t.temps_total(self.c.v_conso,self.v.hcruise)/3600,2),'heures')
-        print(f"Le gain de temps est de",round((self.t.temps_total(self.c.v_conso,self.v.hcruise)- self.t.temps_total(self.v.vmax,self.H_max))/3600,2),'heures')
+        tps_tot_min = self.t.temps_cruise(self.v_max, self.H_max) + self.t.temps_desc() + self.tps_mont_max[self.i_max]
+        tps_tot_max = self.t.temps_cruise(self.v_conso, self.H_conso) + self.t.temps_desc() + self.tps_mont_min[
+            self.i_min]
+        # print(self.v_max)
+        print(f"Le temps de trajet minimum est de", round(tps_tot_min / 3600, 2), 'heures')
+        print(f"Le temps de trajet pour une consommation minimum est de", round(tps_tot_max / 3600, 2), 'heures')
+        print(f" ==> Le gain de temps est de", round((tps_tot_max - tps_tot_min) / 3600, 2), 'heures')
         plt.show()

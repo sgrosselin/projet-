@@ -25,9 +25,24 @@ class Conso:
 
         self.Avion=avion
         self.v = V
-        v_max,self.v_cruise,temp=self.v.calcul_vitesse() #m/s
+        self.v_max,self.v_cruise,temp=self.v.calcul_vitesse() #m/s
+        self.Rapport_poids_cruise= 0.975*0.975*0.995*self.Avion.Wto/self.Avion.Wla # On calcule d'abord de poids nécéssaire
+        self.k=1/m.pi*0.8*self.Avion.allongement #Calcul du coefficient d'Oswald
+        self.finesse_max= m.sqrt(1/(4*self.k*0.015)) #Calcul de la finesse maximale
+   
 
-    def consommation(self):
+    def consommation_mont(self,v):  
+        v_montee = self.v.vitesse_montee(v)
+        self.conso_montee = []
+        for i in range(len(v_montee)) :
+            conso=[]
+            for j in v_montee[i]:
+                conso.append((j*1.9438/self.Avion.range)*self.finesse_max*m.log(self.Rapport_poids_cruise))
+                self.conso_montee.append(sum(conso)/len(conso))
+        print()
+        return self.conso_montee
+     
+    def consommation_cruise_min(self,):
         """
         Calcul la consommation en carburant de l'avion choisit par l'utilisateur en fonction du trajet
 
@@ -37,26 +52,24 @@ class Conso:
             - int : i, La position de la consommation minimale dans la liste des consommations
         """
     # Nous allons calculer la consommation spécifique à l'aide de la formule de Breguet
-        Rapport_poids_cruise= 0.975*0.975*0.995*self.Avion.Wto/self.Avion.Wla # On calcule d'abord de poids nécéssaire
-        k=1/m.pi*0.8*self.Avion.allongement #Calcul du coefficient d'Oswald
-        finesse_max= m.sqrt(1/(4*k*0.015)) #Calcul de la finesse maximale
-        
-        for i, vkts_cruise in enumerate(self.v_cruise):
-        #Nous allons comparer chaque valeurs de C_min que nous aurons calculé afin de ne retenir que la plus petite
-            self.C_min=1
-            i_min=0
-            C=(vkts_cruise*1.9438/self.Avion.range)*finesse_max*m.log(Rapport_poids_cruise)
+        self.conso_min = []     
+        for i, vkts in enumerate(self.v_cruise):
+
+            self.conso_min.append((vkts*1.9438/self.Avion.range)*self.finesse_max*m.log(self.Rapport_poids_cruise))          
              # la vitesse est en kts pour la formule de Breguet
-            if C<self.C_min:
-                self.C_min = C #C est en lb/lb.h
-                i_min=i #On a besoin de garder la position de C_min dans la liste, afin de pouvoir réutilsier directement cette position dans nos calculs de vitesse, choix d'altitude ...
-            else:
-                self.C_min=self.C_min     #C est en lb/lb.h
-        self.v_conso=self.v_cruise[i_min]
 
-        return (round(self.C_min,5),self.v_conso, i_min)
+        return self.conso_min
 
 
+    def consommation_cruise_max(self):
+    # Nous allons calculer la consommation spécifique à l'aide de la formule de Breguet   
+        self.conso_max = []     
+        for i, vkts in enumerate(self.v_max):
 
+            self.conso_max.append((vkts*1.9438/self.Avion.range)*self.finesse_max*m.log(self.Rapport_poids_cruise))          
+             # la vitesse est en kts pour la formule de Breguet
+
+        return self.conso_max
+        
 
 

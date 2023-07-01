@@ -39,7 +39,7 @@ class Affichage_dist:
             -list : Liste des distances pour l'ordonnée (qui va correspondre à la distance entre les aéroports)
             -list des altitudes de notre avion
         """
-        i_max,self.H_max = self.v.valeur_vitesse_max()
+        i_max,self.H_max, self.v_max = self.v.valeur_vitesse_max()
         dist_mont_max, dist_mont_sol_max = self.d.distance_montee(self.H_max)
         dist_desc_max, dist_desc_sol_max = self.d.distance_descente(self.H_max)
         
@@ -76,7 +76,8 @@ class Affichage_dist:
                 -list des altitudes de notre avion
 
         """
-        self.H_conso = self.v.hcruise
+        self.liste_v_max, self.liste_v_conso , T= self.v.calcul_vitesse()
+        Q_min, i_min, self.H_conso, self.v_conso= self.c.carburant_conso_min(self.liste_v_conso)
         dist_mont_conso, dist_mont_sol_conso = self.d.distance_montee(self.H_conso)
         dist_desc_conso, dist_desc_sol_conso = self.d.distance_descente(self.H_conso)
         i=1
@@ -103,6 +104,7 @@ class Affichage_dist:
         return x_c_min,y_c_min
 
 
+
     def plan_de_vol_dist(self, lat, long):
         """
         Cette fonction trace le plan de vol en 3D avec le trajet à consommation minimale et à temps minimal
@@ -113,8 +115,17 @@ class Affichage_dist:
         :return:
             Le tracé en 3D sur la terre
         """
+
         x_t_min, y_t_min = self.graphique_t_min()
         x_c_min, y_conso_min = self.graphique_c_min()
+        print(f"l'altitude pour un temps minimum est de ", round((self.H_max + self.arrivee), 2), "km")
+        print(f"l'altitude pour une consommation minimum est de ", round((self.H_conso + self.arrivee), 2), "km")
+        print(f"Pour le trajet le plus rapide, la consommation est", round(self.c.carburant_temps_min() * 0.00454, 2),
+              "tonnes de carburant ont été consommé")
+        print(f"Pour le vol avec une consommation minimale, ", round(self.c.Q_min * 0.00454, 3),
+              "tonnes de carburant ont été consommé")
+        print(f" ==> Vous pourriez economiser", round((self.c.carburant_temps_min() - self.c.Q_min) * 0.00454, 2),
+              "tonnes de carburant")
 
         # Coordonnées des aéroports
         paris_longitude = np.deg2rad(2.3522)

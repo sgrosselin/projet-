@@ -34,10 +34,10 @@ class Utilisateur:
         print("\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
         print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
         print("Voici les deux propositions en fonction du temps :\n")
-        print(self.aff_tps.plan_de_vol())
+        a=self.aff_tps.plan_de_vol()
+        print(a)
 
         print("\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
         print("Voici les deux proposition en fonction de la distance :\n")
-        print(self.aff_dist.plan_de_vol_dist(lat,long))
+        print(self.aff_dist.plan_de_vol_dist(lat, long))
 
-        print(f"Pour le vol avec une consommation minimale, ",round(self.c.carburant_consommee_minimal(),3),"lbs de carburant ont été consommé" )

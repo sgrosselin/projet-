@@ -20,13 +20,14 @@ class Vitesse :
             - avion (Classe) : La classe avion relative à l'avion choisi par l'utilisateur
 
         """
-    def __init__(self,avion):
+    def __init__(self,avion,aero):
         """
         Initialise la classe Vitesse
         :param - avion (Classe) : La classe avion relative à l'avion choisi par l'utilisateur
         """
         self.Avion= avion
-
+        self.aeroport = aero
+        
     def calcul_vitesse(self):
         """
         Fonction qui calcule la vitesse maximale de l'avion
@@ -37,7 +38,7 @@ class Vitesse :
         """
     #Cette fonction va nous ressortir une liste de vitesse max et une liste de vitesse de croisière ainsi que la liste de température
         self.vitesse_max=[]
-        vitesse_cruise = []
+        self.vitesse_cruise = []
         self.altitude=[]
         self.Tliste=[]
         #On va créer une boucle for, qui va parcourir une liste d'altitude
@@ -50,11 +51,11 @@ class Vitesse :
             self.altitude.append(i/1000)    #altitude en km
             self.Tliste.append(T)
             self.a= m.sqrt(1.4*287*T) #On calcule la vitesse du son
-            vitesse_cruise.append(round((self.Avion.M_cruise * self.a),2))  # en m/s
+            self.vitesse_cruise.append(round((self.Avion.M_cruise * self.a),2))  # en m/s
             #On calcule la vitesse de croisière avec le Mach de croisière
             self.vitesse_max.append(round((self.Avion.M_max*self.a),2))  # en m/s
             #On calcule la vitesse maximale avec le Mach max
-        return self.vitesse_max, vitesse_cruise, self.Tliste
+        return self.vitesse_max, self.vitesse_cruise, self.Tliste
 
     def valeur_vitesse_max(self):
         """
@@ -65,48 +66,26 @@ class Vitesse :
         """
     #Cette fonction nous permet de ressortir la vitesse maximale de la liste de vitesse maximale. Suite à cela nous ressortirons la position dans la liste et l'altitude correspondante
         i_max=0
-        self.vmax=max(self.vitesse_max)
+        self.v_max=max(self.vitesse_max)
         for i in range(len(self.vitesse_max)):
             #Cette boulce for nous permet de trouver à qu'elle position se situe la vitesse maximale
-            if self.vitesse_max[i] == self.vmax :
+            if self.vitesse_max[i] == self.v_max :
                 i_max = i
         self.H_max = self.altitude[i_max]
-        return i_max, self.H_max        #en km
+        return i_max, self.H_max, self.v_max        #en km
 
+    def vitesse_montee (self,vitesse):
+        v_montee = []
+        for i in range(len(self.vitesse_cruise)):
+            coeff_directeur = (vitesse[i] - self.Avion.V_decollage*0.514)/(self.altitude[i]*1000 - self.aeroport.altitude*0.305)
+            alt_aeroport = int(self.aeroport.altitude*0.305)
+            v=[]
+            for x in range(alt_aeroport,int(self.altitude[i]*1000),100):               
+                v.append(coeff_directeur*x + self.Avion.V_decollage*0.514)
+            v_montee.append(v)
+        #print(v_montee[0])
+        return v_montee
 
-    def vitesse_decrochage(self,consommation):
-        """
-        Calcule la vitesse de décrochage de l'avion
-
-        :param consommation: (Classe): Classe consommation
-        :return:
-            - float : Vitesse de décrochage de l'avion
-        """
-        self.conso=consommation
-        Cltomax=1.8 #Valeur de Cltomax prise pour une moyenne d'avion
-        c,v,i_min=self.conso.consommation()
-        Temp = self.Tliste[i_min] #On utilise la position return dans la classe consommation, afin d'avoir la position de C_min et donc d'utiliser la bonne température
-        if Temp > T11km:
-        #Il y a différents rho en fonction de la température
-            self.rho = rhoSL * (Temp / TSL) ** (-g0 / (a0 * R) - 1)  # kg/m^3
-        else:
-            self.hcruise = self.altitude[i_min]
-            rho11km = rhoSL * (T11km / TSL) ** (-g0 / (a0 * R) - 1)  # densite 11 km
-            self.rho = rho11km * m.exp(-(g0 / (R * Temp)) * (self.hcruise - 11))  # densite apres 11 km
-        return m.sqrt(self.Avion.Wto*0.4535/(0.5*self.rho*Cltomax*self.Avion.s_alaire*0.0929)) #conversion ft^2 en m^2
-        #Formule qui nous permet de calculer la vitesse de décrochage
-
-
-    def vitesse_decollage(self,conso):
-        """
-        Calcule la vitesse de décollage en utilisant la vitesse de décrochage
-        :param conso: (Classe) : Classe conso de l'avion
-
-        :return:
-            - float : Vitesse de décrochage de l'avion
-        """
-    #La vitesse de décollage dépend de la vitesse de décrochage
-        return 1.1*self.vitesse_decrochage(conso)
 
     def vitesse_descente(self):
         """
@@ -117,7 +96,7 @@ class Vitesse :
         """
         k=1/(m.pi*self.Avion.allongement*e) #Calcul du coefficient d'Oswald
         Cl = m.sqrt(Cd0/k) #Calcul du coefficient de trainée
-        V_desc = m.sqrt((2*m.cos(m.degrees(gamma_desc))*self.Avion.Wla*0.4535)/(rhoSL*Cl*self.Avion.s_alaire*0.0929)) #Calcul de la vitesse de descente
+        V_desc = m.sqrt((2*m.cos(m.degrees(gamma_desc))*self.Avion.Wla*0.4535*9.81)/(rhoSL*Cl*self.Avion.s_alaire*0.0929)) #Calcul de la vitesse de descente
         return V_desc
 
 

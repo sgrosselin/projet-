@@ -18,7 +18,7 @@ class Aircraft:
         data = pd.read_csv('Base_donnee_avions.csv', index_col=0, delimiter=';', decimal='.', thousands=' ')
 
         data.columns = ['Modele', 'Constructeur', 'Type', 'Conso', 's_alaire', 'envergure', 'allongement', 'range',
-                    'Mach_cruise', 'Mach_max', 'WTO', 'WLA', 'Wf', 'We', 'Poussee']
+                    'Mach_cruise', 'Mach_max', 'WTO', 'WLA', 'Wf', 'We', 'Poussee', 'V_decollage']
     #Dans cette fonction, on appelle toutes les colonnes de notre fichier, et donc ainsi toutes les valeurs afin de pouvoir les réutiliser
         print("\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
         print("\nLe but de ce programme est de vous permettre de choisir l'avion que vous souhaitez, puis un aéroport d'arrivée. ")
@@ -43,7 +43,8 @@ class Aircraft:
         self.Wf = avion ['Wf'].astype('float').values[0]
         self.We = avion ['We'].astype('float').values[0]
         self.Poussee = avion['Poussee'].astype('float').values[0]
-    # 'values[0]' nous eprmet de ne ressortir que la valeur de We pour un avion spécifique
+        self.V_decollage = avion['V_decollage'].astype('float').values[0]
+        # 'values[0]' nous eprmet de ne ressortir que la valeur de We pour un avion spécifique
     # Nous avons du mettre toutes nos valeurs en types float
 
 
