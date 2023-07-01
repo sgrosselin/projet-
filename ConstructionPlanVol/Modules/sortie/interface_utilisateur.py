@@ -19,7 +19,7 @@ class Utilisateur:
         - long (float) : La longitude de l'aéroport d'arrivée
 
     """
-    def __init__(self,aff_dist, aff_tps, conso, lat, long):
+    def __init__(self,aff_dist, aff_tps, conso, aeroport):
         """
             Initialise la classe Utilisateur
 
@@ -27,14 +27,14 @@ class Utilisateur:
                 - aff_dist (Classe) : Classe Affichage_dist créee dans le fichier affichage_distance.py
                 - a ff_tps (Classe) : Classe Affichage créee dans le fichier affichage_temps.py
                 - conso (Classe) : La classe conso de l'avion choisi dans le fichier consommation.py
-                - lat (float) : La latitude de l'aéroport d'arrivée
-                - long (float) : La longitude de l'aéroport d'arrivée
+                - aeroport (Classe) : La classe avec les aeroports repertoriés dans le fichier csv
+                
             """
         self.aff_dist = aff_dist
         self.aff_tps = aff_tps
         self.c = conso
-        self.lat = lat
-        self.long = long
+        self.aero = aeroport
+        lat_arrive,long_arrive=aeroport.coordonnees_arrive()
 
 
 
