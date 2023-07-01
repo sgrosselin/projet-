@@ -34,7 +34,7 @@ Nous obtenons aussi les courbes suivantes:
 
 .. image:: Images/Affichage_1.png
 
-.. image:: Images/Affichage_2.png
+.. image:: Images/Affichage_3D.png
 
 
 
