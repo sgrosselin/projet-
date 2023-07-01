@@ -3,22 +3,27 @@
 #Cette classe nous permet de calculer les temps lors des diffÃ©rentes phases
 class Temps:
     """
-        ReprÃ©sente la classe temps pour calculer le temps de vol sur chacune des trois phases de vol
+        Représente la classe temps pour calculer le temps de vol sur chacune des trois phases de vol
 
         Attributs :
-            - dist (Classe) : La classe distance relative Ã  la distance parcourue par l'avion dans le fichier distance.py            - Vitesse (Classe) : la classe vitesse relative au trajet et Ã  l'avion crÃ©e dans le fichier vitesses.py
-            - dist (Classe) : La classe distance relative Ã  la distance parcourue par l'avion dans le fichier distance.py            - Vitesse (Classe) : la classe vitesse relative au trajet et Ã  l'avion crÃ©e dans le fichier vitesses.py
-            - vit (classe) : la classe vitesse relative au trajet et Ã  l'avion crÃ©e dans le fichier vitesses.py
-            - conso (Classe) : la classe Conso relative dans le fichier consommation.py
+
+            - dist (Classe) : La classe distance relative à la distance parcourue par l'avion dans le fichier distance.py
+            - vit (classe) : la classe vitesse relative au trajet et à l'avion, créee dans le fichier vitesses.py
+            - aero (Classe) : la classe Aeroports  dans le fichier aeroports.py
+            - avion (Classe) : la classe Aircraft dans le fichier aircraft.py
+
         """
     def __init__(self,dist,vit,aero,avion):
         """
                 Initialise la classe Temps
 
                 Attributs :
-                    - dist (Classe) : La classe distance relative Ã  la distance parcourue par l'avion dans le fichier distance.py            - Vitesse (Classe) : la classe vitesse relative au trajet et Ã  l'avion crÃ©e dans le fichier vitesses.py
-                    - vit (classe) : la classe vitesse relative au trajet et Ã  l'avion crÃ©e dans le fichier vitesses.py
-                    - conso (Classe) : la classe Conso relative dans le fichier consommation.py
+
+                    - dist (Classe) : La classe distance relative à la distance parcourue par l'avion dans le fichier distance.py
+                    - vit (classe) : la classe vitesse relative au trajet et à l'avion, créee dans le fichier vitesses.py
+                    - aero (Classe) : la classe Aeroports  dans le fichier aeroports.py
+                    - avion (Classe) : la classe Aircraft dans le fichier aircraft.py
+
                 """
         self.d=dist
         self.v = vit
@@ -27,11 +32,12 @@ class Temps:
 
     def temps_mont(self,v):
         """
-        Calcule le temps de montÃ©e
-        :param alt: (float) : Altitude de la phase de croisiÃ¨re
+        Calcule le temps de montée
+
+        :param v: (float) : vitesse de l'avion
 
         :return:
-            - float : temps de montÃ©e en s
+            - float : temps de montée en s
         """
         t_montee=[]
         v_montee = self.v.vitesse_montee(v)
@@ -47,12 +53,13 @@ class Temps:
 
     def temps_cruise(self,v_vol,alt):
         """
-        Calcul le temps de vol durant la phase de croisiÃ¨re
-        :param v_vol: (float) : Vitesse de croisiÃ¨re de l'avion
-        :param alt: (float) Altitude de croisiÃ¨re de l'avion
+        Calcul le temps de vol durant la phase de croisière
+
+        :param v_vol: (float) : Vitesse de croisière de l'avion
+        :param alt: (float) Altitude de croisière de l'avion
 
         :return:
-            float : Temps de vol durant la phase de croisiÃ¨re
+            float : Temps de vol durant la phase de croisière
         """
         self.d_desc_sol, self.d_desc= self.d.distance_descente(alt)
         self.d_montee_sol, self.d_mont = self.d.distance_montee(alt)

@@ -27,7 +27,9 @@ class Aeroports:
     def distance_aeroports(self):
         """
         Fonction qui calcule la distance à vol d'oiseau entre l'aéroport de départ CDG et l'aéroport d'arrivée choisi par l'utilisateur
-        :return: - float : Distance entre les aéroports en km
+
+        :return: - (float) : Distance entre les aéroports en km
+
         """
         self.aeroport_depart='CDG'
         self.latitude_dep = 49.008014499166165
@@ -46,5 +48,14 @@ class Aeroports:
         return dist_aeroports
 
     def coordonnees_arrive(self):
+        """
+        Fonction qui va retourner la latitude et la longitude de l'aéroport d'arrivée
+
+        :return:
+
+            - (float) : latitude aéroport arrivée
+            - (float) : longitude aéroport arrivée
+
+        """
         return self.latitude_arr, self.longitude_arr
 

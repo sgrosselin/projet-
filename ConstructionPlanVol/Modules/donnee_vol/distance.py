@@ -28,6 +28,7 @@ class Distance:
     def distance_montee(self,alt):
         """
         Calcule la distance de montée réelle et la distance de montée au sol
+
         :param alt: (float) : Altitude de la phase de croisière
 
         :return:
@@ -42,6 +43,8 @@ class Distance:
     def distance_descente(self,alt):
         """
 
+        Calcule la distance de montée réelle et la distance de montée au sol
+
         :param alt: (float) : Altitude de la phase de croisière
 
         :return:
@@ -55,6 +58,7 @@ class Distance:
 
     def distance_croisiere(self, d_desc_sol, d_mont_sol):
         """
+        Calcule la distance de montée réelle et la distance de montée au sol
 
         :param d_desc_sol: (float) : Distance au sol parcourue pendant la phase de descente
         :param d_mont_sol: (float) : Distance au sol parcourue pendant la phase de montée

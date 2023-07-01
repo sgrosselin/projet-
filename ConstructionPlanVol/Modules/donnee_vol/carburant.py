@@ -30,10 +30,15 @@ class Carburant:
     def carburant_conso_min (self,v):
         """
         Fonction qui calcule la quantité de carburant consommée pour un vol avec une consommation de carburant minimale
-
+        :param v: vitesse de l'avion
 
         :return:
-            int : Quantité de carburant consommée en lb
+
+            - int : Q : Quantité de carburant consommée en lb
+            - int : i_minim : Position de la consommation minimale dans la liste conso
+            - float : H_conso : Altitude pour une consommation minimale
+            - float : v_conso : Vitesse pour la consommation minimale
+
         """       
         poussee = self.Avion.Poussee
         conso_min = self.c.consommation_cruise_min()
@@ -64,7 +69,7 @@ class Carburant:
 
 
         :return:
-            int : Quantité de carburant consommée en lb
+            - int : Quantité de carburant consommée en lb
         """  
         conso_max = self.c.consommation_cruise_max()
         conso_montee= self.c.consommation_mont(self.liste_v_max)

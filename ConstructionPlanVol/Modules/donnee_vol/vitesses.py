@@ -17,13 +17,16 @@ class Vitesse :
         Classe Vitesse qui permet de calculer la vitesse de l'avion sur différentes phases de vol
 
         Attributs :
-            - avion (Classe) : La classe avion relative à l'avion choisi par l'utilisateur
-
+            - avion (Classe) : La classe Aircraft relative à l'avion choisi par l'utilisateur
+            - aero (Classe) : La classe Aeroports relative à l'aéroport de destination choisi par l'utilisateur
         """
     def __init__(self,avion,aero):
         """
         Initialise la classe Vitesse
+
         :param - avion (Classe) : La classe avion relative à l'avion choisi par l'utilisateur
+
+        :param - aero (Classe) : La classe Aeroports relative à l'aéroport de destination choisi par l'utilisateur
         """
         self.Avion= avion
         self.aeroport = aero
@@ -31,7 +34,9 @@ class Vitesse :
     def calcul_vitesse(self):
         """
         Fonction qui calcule la vitesse maximale de l'avion
+
         :return:
+
             - list : Liste des vitesses maximales de l'avion
             - list : Liste des vitesses de croisière de l'avion
             - list : Liste des températures
@@ -60,9 +65,13 @@ class Vitesse :
     def valeur_vitesse_max(self):
         """
         Permet de calculer la vitesse maximale
+
         :return:
+
             - int : Position de la vitesse maximale dans la liste des vitesses
             - float : Altitude pour laquelle on a une vitesse maximale
+            - float : Vitesse maximale
+
         """
     #Cette fonction nous permet de ressortir la vitesse maximale de la liste de vitesse maximale. Suite à cela nous ressortirons la position dans la liste et l'altitude correspondante
         i_max=0
@@ -75,6 +84,15 @@ class Vitesse :
         return i_max, self.H_max, self.v_max        #en km
 
     def vitesse_montee (self,vitesse):
+        """
+        Calcule la vitesse pour la phase de descente de l'avion
+
+        :param vitesse - list : liste des vitesses
+
+        :return:
+
+            - float : Vitesse de montée
+        """
         v_montee = []
         for i in range(len(self.vitesse_cruise)):
             coeff_directeur = (vitesse[i] - self.Avion.V_decollage*0.514)/(self.altitude[i]*1000 - self.aeroport.altitude*0.305)
@@ -83,13 +101,12 @@ class Vitesse :
             for x in range(alt_aeroport,int(self.altitude[i]*1000),100):               
                 v.append(coeff_directeur*x + self.Avion.V_decollage*0.514)
             v_montee.append(v)
-        #print(v_montee[0])
         return v_montee
 
 
     def vitesse_descente(self):
         """
-        Calcume la vitesse pour la phase de descente de l'avion
+        Calcule la vitesse pour la phase de descente de l'avion
 
         :return:
             float : Vitesse de descente de l'avion

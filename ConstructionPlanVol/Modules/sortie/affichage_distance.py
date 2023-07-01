@@ -19,6 +19,7 @@ class Affichage_dist:
     def __init__(self,conso,vitesse,distance, aeroport):
         """
             Initialise la classe Affichage_dist
+
             Arguments:
                 - conso (classe) : la classe conso correspondant à la consommation de l'avion choisi par l'utilisateur
                 - vitesse (classe) : la classe vitesse relative au trajet et à l'avion crée dans le fichier vitesses.py
@@ -36,8 +37,11 @@ class Affichage_dist:
         Fonction qui va calculer le plan de vol pour un vol à vitesse maximale
 
         :return:
+
             -list : Liste des distances pour l'ordonnée (qui va correspondre à la distance entre les aéroports)
+
             -list des altitudes de notre avion
+
         """
         i_max,self.H_max, self.v_max = self.v.valeur_vitesse_max()
         dist_mont_max, dist_mont_sol_max = self.d.distance_montee(self.H_max)
@@ -72,7 +76,9 @@ class Affichage_dist:
             Fonction qui va calculer le plan de vol pour un vol à consommation minimale
 
             :return:
+
                 -list : Liste de la distance pour l'ordonnée (qui va correspondre à la distance entre les aéroports)
+
                 -list des altitudes de notre avion
 
         """
@@ -120,10 +126,10 @@ class Affichage_dist:
         x_c_min, y_conso_min = self.graphique_c_min()
         print(f"l'altitude pour un temps minimum est de ", round((self.H_max + self.arrivee), 2), "km")
         print(f"l'altitude pour une consommation minimum est de ", round((self.H_conso + self.arrivee), 2), "km")
-        print(f"Pour le trajet le plus rapide, la consommation est", round(self.c.carburant_temps_min() * 0.00454, 2),
-              "tonnes de carburant ont été consommé")
+        print(f"Pour le trajet le plus rapide, ", round(self.c.carburant_temps_min() * 0.00454, 2),
+              "tonnes de carburant ont été consomée")
         print(f"Pour le vol avec une consommation minimale, ", round(self.c.Q_min * 0.00454, 3),
-              "tonnes de carburant ont été consommé")
+              "tonnes de carburant ont été consommée")
         print(f" ==> Vous pourriez economiser", round((self.c.carburant_temps_min() - self.c.Q_min) * 0.00454, 2),
               "tonnes de carburant")
 

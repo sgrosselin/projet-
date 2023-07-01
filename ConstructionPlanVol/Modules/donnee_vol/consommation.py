@@ -9,14 +9,17 @@ class Conso:
     Représente la classe Conso
 
     Attributs :
+
         - avion (classe) : la classe avion correspondant à l'avion choisit par l'utilisateur
         - V (classe) : la classe vitesse relative au trajet et à l'avion crée dans le fichier vitesses.py
+
     """
     def __init__(self, avion,V):
         """
            Initialise la consommation
 
            Arguments :
+
                - avion (classe) : la classe avion correspondant à l'avion choisit par l'utilisateur
                - V (classe) : la classe vitesse relative au trajet et à l'avion crée dans le fichier vitesses.py
 
@@ -31,7 +34,18 @@ class Conso:
         self.finesse_max= m.sqrt(1/(4*self.k*0.015)) #Calcul de la finesse maximale
    
 
-    def consommation_mont(self,v):  
+    def consommation_mont(self,v):
+        """
+        Fonction qui calcule la consommation durant la phase de montée
+
+        :param v:
+            (float) :Vitesse de l'avion
+
+        :return:
+
+            - (float) : Consommation durant la phase de montée
+
+        """
         v_montee = self.v.vitesse_montee(v)
         self.conso_montee = []
         for i in range(len(v_montee)) :
@@ -42,14 +56,14 @@ class Conso:
         print()
         return self.conso_montee
      
-    def consommation_cruise_min(self,):
+    def consommation_cruise_min(self):
         """
         Calcul la consommation en carburant de l'avion choisit par l'utilisateur en fonction du trajet
 
         :return:
-            - float : C, la consommation optimale en lb/lb/h
-            - float : V, La vitesse de croisière pour la valeur de la consommation optimale calculée
-            - int : i, La position de la consommation minimale dans la liste des consommations
+
+            - float : C : la consommation optimale en lb/lb/h
+
         """
     # Nous allons calculer la consommation spécifique à l'aide de la formule de Breguet
         self.conso_min = []     
@@ -62,6 +76,14 @@ class Conso:
 
 
     def consommation_cruise_max(self):
+        """
+        Fonction qui calcule la consommation maximale durant la phase de croisière
+
+        :return:
+
+            - (float) : conso_max : Consommation maximale durant la phase de croisière
+
+        """
     # Nous allons calculer la consommation spécifique à l'aide de la formule de Breguet   
         self.conso_max = []     
         for i, vkts in enumerate(self.v_max):

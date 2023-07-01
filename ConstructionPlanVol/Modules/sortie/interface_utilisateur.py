@@ -9,8 +9,15 @@ class Utilisateur:
 
     Attributs :
         - aff_dist (Classe) : Classe Affichage_dist créee dans le fichier affichage_distance.py
+
         - aff_tps (Classe) : Classe Affichage créee dans le fichier affichage_temps.py
+
         - conso (Classe) : La classe conso de l'avion choisi dans le fichier consommation.py
+
+        - lat (float) : La latitude de l'aéroport d'arrivée
+
+        - long (float) : La longitude de l'aéroport d'arrivée
+
     """
     def __init__(self,aff_dist, aff_tps, conso, lat, long):
         """
@@ -18,8 +25,10 @@ class Utilisateur:
 
             Arguments:
                 - aff_dist (Classe) : Classe Affichage_dist créee dans le fichier affichage_distance.py
-                - aff_tps (Classe) : Classe Affichage créee dans le fichier affichage_temps.py
+                - a ff_tps (Classe) : Classe Affichage créee dans le fichier affichage_temps.py
                 - conso (Classe) : La classe conso de l'avion choisi dans le fichier consommation.py
+                - lat (float) : La latitude de l'aéroport d'arrivée
+                - long (float) : La longitude de l'aéroport d'arrivée
             """
         self.aff_dist = aff_dist
         self.aff_tps = aff_tps

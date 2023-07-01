@@ -8,10 +8,11 @@ class Affichage:
         Classe qui va permettre d'afficher les courbes correspondant aux plans de vol en fonction du temps
 
         Attributs:
-            - conso (classe) : la classe conso correspondant à la consommation de l'avion choisi par l'utilisateur
+
+            - carburant (classe) : la classe Carburant correspondant à la quantité de carburant consommée
             - vitesse (classe) : la classe vitesse relative au trajet et à l'avion crée dans le fichier vitesses.py
             - temps (classe) : la classe temps créee dans le fichier temps.py
-            - aeroport (classe) : La classe aeroport créee dans le fichier aeroports.py*
+            - aeroport (classe) : La classe aeroport créee dans le fichier aeroports.py
 
         """
     def __init__(self, carb, vitesse, temps, aeroport):
@@ -19,7 +20,8 @@ class Affichage:
             Initialise la classe Affichage
 
             Arguments:
-                - conso (classe) : la classe conso correspondant à la consommation de l'avion choisi par l'utilisateur
+
+                - carburant (classe) : la classe Carburant correspondant à la quantité de carburant consommée
                 - vitesse (classe) : la classe vitesse relative au trajet et à l'avion crée dans le fichier vitesses.py
                 - temps (classe) : la classe temps créee dans le fichier temps.py
                 - aeroport (classe) : La classe aeroport créee dans le fichier aeroports.py
@@ -36,8 +38,12 @@ class Affichage:
             Fonction qui va calculer le plan de vol pour un vol à vitesse maximale
 
             :return:
+
                 -list : Liste des temps pour l'ordonnée (qui va correspondre au temps de vol)
-                -list des altitudes de notre avion pour un temps de vol minimal
+
+                -list : Liste des altitudes de notre avion pour un temps de vol minimal
+
+                -float : Altitude correspondant à l'altitude de croisière pour un vol à temps minimal
 
         """
         self.i_max, self.H_max, self.v_max = self.v.valeur_vitesse_max()
@@ -74,7 +80,8 @@ class Affichage:
 
             :return:
                 -list : Liste des temps pour l'ordonnée (qui va correspondre au temps de vol)
-                -list des altitudes de notre avion pour une consommation minimale*
+
+                -list : Liste des altitudes de notre avion pour une consommation minimale
 
         """
         self.Q_min, self.i_min, self.H_conso, self.v_conso= self.c.carburant_conso_min(self.liste_v_conso)
@@ -107,6 +114,7 @@ class Affichage:
         Fonction qui va tracer le plan de vol pour un vol à consommation minimale et pour un temps minimal en fonction du temps
 
         :return: Le tracé réalisé
+
         """
     # Cette fonction affiche un graphique avec deux courbes, une pour le temps minimum et une pour la consommation minimum, le tout en fonction du temps
         x_t_min, y_t_min,H_max = self.graphique_altitude_t_min()

@@ -25,10 +25,11 @@ Nous obtenons dès lors :
 
 - Distance aéroports : 5541,12 Km
 - H_t_min :  5,04 Km (Altitude pour un temps de vol minimal)
-- H_c_min : 12,94 km (Altitude pour une consommation minimale)
-- Temps de trajet minimal : 6h 6 min
-- Temps de trajet pour une consommation minimale : 7 h 49 min
-- Consommation minimale de carburant : 85375 lbs
+- H_c_min : 10.64 km (Altitude pour une consommation minimale)
+- Temps de trajet minimal : 5.52 h
+- Temps de trajet pour une consommation minimale : 6.5 h
+- Pour le vol avec une consommation minimale,  121.766 tonnes de carburant ont été consommé
+- Pour le trajet le plus rapide, 123.61 tonnes de carburant ont été consommé
 
 Nous obtenons aussi les courbes suivantes:
 

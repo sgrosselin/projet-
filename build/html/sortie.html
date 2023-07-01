@@ -55,8 +55,9 @@
 <dd><p>Fonction qui va calculer le plan de vol pour un vol à consommation minimale</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>-list : Liste de la distance pour l’ordonnée (qui va correspondre à la distance entre les aéroports)
--list des altitudes de notre avion</p>
+<dd class="field-odd"><p><p>-list : Liste de la distance pour l’ordonnée (qui va correspondre à la distance entre les aéroports)</p>
+<p>-list des altitudes de notre avion</p>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -67,8 +68,9 @@
 <dd><p>Fonction qui va calculer le plan de vol pour un vol à vitesse maximale</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>-list : Liste des distances pour l’ordonnée (qui va correspondre à la distance entre les aéroports)
--list des altitudes de notre avion</p>
+<dd class="field-odd"><p><p>-list : Liste des distances pour l’ordonnée (qui va correspondre à la distance entre les aéroports)</p>
+<p>-list des altitudes de notre avion</p>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -97,26 +99,27 @@
 <span id="fichier-affichage-temps-py"></span><h2>Fichier affichage_temps.py<a class="headerlink" href="#module-sortie.affichage_temps" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="sortie.affichage_temps.Affichage">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sortie.affichage_temps.</span></span><span class="sig-name descname"><span class="pre">Affichage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conso</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vitesse</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aeroport</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sortie.affichage_temps.Affichage" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sortie.affichage_temps.</span></span><span class="sig-name descname"><span class="pre">Affichage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">carb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vitesse</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aeroport</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sortie.affichage_temps.Affichage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Classe qui va permettre d’afficher les courbes correspondant aux plans de vol en fonction du temps</p>
-<dl class="simple">
-<dt>Attributs:</dt><dd><ul class="simple">
-<li><p>conso (classe) : la classe conso correspondant à la consommation de l’avion choisi par l’utilisateur</p></li>
+<p>Attributs:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>carburant (classe) : la classe Carburant correspondant à la quantité de carburant consommée</p></li>
 <li><p>vitesse (classe) : la classe vitesse relative au trajet et à l’avion crée dans le fichier vitesses.py</p></li>
 <li><p>temps (classe) : la classe temps créee dans le fichier temps.py</p></li>
-<li><p>aeroport (classe) : La classe aeroport créee dans le fichier aeroports.py*</p></li>
+<li><p>aeroport (classe) : La classe aeroport créee dans le fichier aeroports.py</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <dl class="py method">
 <dt class="sig sig-object py" id="sortie.affichage_temps.Affichage.graphique_altitude_C_min">
 <span class="sig-name descname"><span class="pre">graphique_altitude_C_min</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sortie.affichage_temps.Affichage.graphique_altitude_C_min" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fonction qui va calculer le plan de vol pour un vol à consommation minimale</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>-list : Liste des temps pour l’ordonnée (qui va correspondre au temps de vol)
--list des altitudes de notre avion pour une consommation minimale*</p>
+<dd class="field-odd"><p><p>-list : Liste des temps pour l’ordonnée (qui va correspondre au temps de vol)</p>
+<p>-list : Liste des altitudes de notre avion pour une consommation minimale</p>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -127,8 +130,10 @@
 <dd><p>Fonction qui va calculer le plan de vol pour un vol à vitesse maximale</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>-list : Liste des temps pour l’ordonnée (qui va correspondre au temps de vol)
--list des altitudes de notre avion pour un temps de vol minimal</p>
+<dd class="field-odd"><p><p>-list : Liste des temps pour l’ordonnée (qui va correspondre au temps de vol)</p>
+<p>-list : Liste des altitudes de notre avion pour un temps de vol minimal</p>
+<p>-float : Altitude correspondant à l’altitude de croisière pour un vol à temps minimal</p>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -159,6 +164,8 @@
 <li><p>aff_dist (Classe) : Classe Affichage_dist créee dans le fichier affichage_distance.py</p></li>
 <li><p>aff_tps (Classe) : Classe Affichage créee dans le fichier affichage_temps.py</p></li>
 <li><p>conso (Classe) : La classe conso de l’avion choisi dans le fichier consommation.py</p></li>
+<li><p>lat (float) : La latitude de l’aéroport d’arrivée</p></li>
+<li><p>long (float) : La longitude de l’aéroport d’arrivée</p></li>
 </ul>
 </dd>
 </dl>
