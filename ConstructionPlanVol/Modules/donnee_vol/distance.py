@@ -14,7 +14,7 @@ class Distance:
         - dist_aeroports (flaot) : Utilise la fonction distance_aeroports de la classe Aeroports pour déterminer la distance entre l'aéroport de départ et d'arrivée
     """
 
-    def __init__(self, vitesse, dist_aeroports):
+    def __init__(self, vitesse, aeroports):
         """
             Initialise la classe distance
 
@@ -22,7 +22,7 @@ class Distance:
                 - Vitesse (Classe) : la classe vitesse relative au trajet et à l'avion crée dans le fichier vitesses.py
                 - dist_aeroports (flaot) : Utilise la fonction distance_aeroports de la classe Aeroports pour déterminer la distance entre l'aéroport de départ et d'arrivée
             """
-        self.aeroports = dist_aeroports
+        self.aeroports = aeroports
         self.v = vitesse
 
     def distance_montee(self,alt):
@@ -68,7 +68,7 @@ class Distance:
 
         """
     #La distance de croisière est calculée en soustrayant les 2 distances précédentes à la distance totale
-        d_cruise = self.aeroports - (d_desc_sol + d_mont_sol)  # km
+        d_cruise = self.aeroports.distance_aeroports() - (d_desc_sol + d_mont_sol)  # km
         return d_cruise # km
 
 
