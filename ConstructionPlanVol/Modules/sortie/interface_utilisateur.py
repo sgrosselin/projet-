@@ -34,7 +34,7 @@ class Utilisateur:
         self.aff_tps = aff_tps
         self.c = conso
         self.aero = aeroport
-        lat_arrive,long_arrive=aeroport.coordonnees_arrive()
+        
 
 
 
@@ -48,5 +48,5 @@ class Utilisateur:
 
         print("\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
         print("Voici les deux proposition en fonction de la distance :\n")
-        print(self.aff_dist.plan_de_vol_dist(lat, long))
+        print(self.aff_dist.plan_de_vol_dist())
 

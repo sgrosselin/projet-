@@ -24,6 +24,7 @@ class Distance:
             """
         self.aeroports = aeroports
         self.v = vitesse
+        self.dist_aero = self.aeroports.distance_aeroports()
 
     def distance_montee(self,alt):
         """
@@ -68,7 +69,7 @@ class Distance:
 
         """
     #La distance de croisière est calculée en soustrayant les 2 distances précédentes à la distance totale
-        d_cruise = self.aeroports.distance_aeroports() - (d_desc_sol + d_mont_sol)  # km
+        d_cruise = self.dist_aero - (d_desc_sol + d_mont_sol)  # km
         return d_cruise # km
 
 

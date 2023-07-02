@@ -111,7 +111,7 @@ class Affichage_dist:
 
 
 
-    def plan_de_vol_dist(self, lat, long):
+    def plan_de_vol_dist(self):
         """
         Cette fonction trace le plan de vol en 3D avec le trajet à consommation minimale et à temps minimal
 
@@ -121,7 +121,7 @@ class Affichage_dist:
         :return:
             Le tracé en 3D sur la terre
         """
-
+        lat,long=self.a.coordonnees_arrive()
         x_t_min, y_t_min = self.graphique_t_min()
         x_c_min, y_conso_min = self.graphique_c_min()
         print(f"l'altitude pour un temps minimum est de ", round((self.H_max + self.arrivee), 2), "km")
